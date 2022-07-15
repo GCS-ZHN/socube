@@ -1,0 +1,56 @@
+{
+    "precision": {
+        "MAST": {
+            "min": 0.5,
+            "max": 1.0
+        },
+        "Wilcoxon": {
+            "min": 0.986,
+            "max": 1
+        },
+        "TSCAN": {
+            "min": 0.874,
+            "max": 0.9541985
+        },
+        "Slingshot": {
+            "min": 0.734,
+            "max": 0.8496503
+        }
+    },
+    "recall": {
+        "MAST": {
+            "min": 0.6358792,
+            "max": 0.695
+        },
+        "Wilcoxon": {
+            "min": 0.6358792,
+            "max": 0.6936057
+        },
+        "TSCAN": {
+            "min": 0.5,
+            "max": 1
+        },
+        "Slingshot": {
+            "min": 0.776,
+            "max": 1.0
+        }
+    },
+    "TNR": {
+        "MAST": {
+            "min": 0.972694,
+            "max": 0.9808067
+        },
+        "Wilcoxon": {
+            "min": 0.9772778,
+            "max": 0.9808655
+        },
+        "TSCAN": {
+            "min": 0.87,
+            "max": 0.976
+        },
+        "Slingshot": {
+            "min": 0.76,
+            "max": 0.914
+        }
+    }
+}
