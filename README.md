@@ -3,7 +3,7 @@
 ![python](https://img.shields.io/badge/python->=3.7-success.svg)
 ![torch](https://img.shields.io/badge/torch->=1.8.1-success.svg)
 
-<img src="https://github.com/idrblab/SoCube/blob/master/fig/Figure%201.svg" alt="SoCube Workflow">
+<img src="fig/workflow.svg" alt="SoCube Workflow">
 
 ## 1. Installment
 
