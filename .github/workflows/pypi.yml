@@ -1,0 +1,48 @@
+name: pypi
+
+# 任务触发
+on:
+  # 当 提交到当前仓库时立即运行
+  push:
+    tags:
+      - 'v-pypi-*'
+
+jobs:
+  # 自动打卡任务
+  pypi:
+    # 使用ubuntu作为运行的OS
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: GCS-ZHN/checkout@v3
+
+      - name: "Get version"
+        id: get_version
+        run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\/v-pypi-*/}
+
+      - name: "Setup Python"
+        uses: GCS-ZHN/setup-python@v4
+        with:
+           python-version: '3.8'
+           architecture: "x64"
+      
+      - name: "Which python"
+        run: "which python && which pip"
+
+      - name: "Setup build"
+        run: "pip install build"
+
+      - name: "Build socube"
+        run: "python -m build"
+
+      - name: "Test socube"
+        run: pip install dist/socube*whl && socube
+
+      - name: "Release socube"
+
+        uses: GCS-ZHN/gh-action-pypi-publish@release/v1
+        with: 
+          user: __token__
+          password: ${{ secrets.PYPI_API_TOKEN }}
+          repository_url: ${{ secrets.PYPI_API_URL }}
+          packages_dir: dist/
