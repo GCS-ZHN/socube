@@ -1,0 +1,35 @@
+{   
+    "command": "socube",
+    "version": "浙大单细胞高通量测序二聚体检测软件（SoCube）v%s，浙江大学版权所有，代码贡献者：张洪宁",
+    "basic_args": {
+        "title": "基础配置",
+        "version": "打印socube版本信息",
+        "input": "用于scRNA-seq的UMI表达矩阵，支持h5格式（pandas DataFrame）和h5ad格式（由python软件包anndata实现）。数据的行是细胞，列是基因，请确保细胞ID是唯一的。",
+        "output": "处理过的中间文件和最终结果的输出目录，如果没有指定，默认是与输入文件相同的目录，如果输出目录不存在，将创建一个新的目录，如果已经存在，就继续使用现有的目录。子目录embedding用于socube嵌入特征，子目录models、plots和outputs用于模型、图表和模型训练产生的结果。",
+        "gpu_ids": "用于加速计算的GPU的ID，如：\"0,1,2,3\"。",
+        "seed": "重现的随机种子，默认是不指定。",
+        "k": "在训练中使用k-折交叉验证法，得到的k个模型将被集合成一个模型。默认为5。",
+        "adj_factor": "二聚体表达水平的调整系数。默认情况下，假定二聚体的表达水平是单体的两倍，但实际情况存在波动，可以通过调整这个系数改变表达水平。默认为1.0。",
+        "dim": "基因特征降维的目标维度也是训练模型的通道数量。默认为10。",
+        "cube_id": "如果你想重新使用先前获得的socube嵌入特征，只需指定embedding ID，这是一个类似于 \"yyymmdd-HHMMSS-xxx\"的字符串，位于embedding子目录下。"
+    },
+    "model_args": {
+        "title": "模型训练配置",
+        "learning_rate": "模型训练的学习率，默认是1e-3。",
+        "epochs": "模型训练最大轮数，默认是100。",
+        "train_batch_size": "模型训练的批量大小。默认为64。",
+        "valid_batch_size": "模型验证的批量大小。默认为512。",
+        "infer_batch_size": "模型推理的批量大小。默认为400。",
+        "threshold": "二聚体检测的分类阈值。该模型输出双子的概率分数，大于阈值的被认为是二聚体，反之为单体。用户可以自定义阈值。默认为0.5。",
+        "enable_validation": "这个选项是为性能评估提供的。你应该输入h5ad格式的数据，并在其`obs`属性中存储标签。`obs'属性是一个`DataFrame'对象，它的标签列名为 \"type\"，值为 \"doublet \"和 \"singlet\"。",
+        "enable_multiprocess": "启用多进程以利用CPU的多个核心。"
+    },
+    "notice_args": {
+        "title": "消息通知配置",
+        "mail": "用于发送和接收通知的电子邮件地址。",
+        "mail_server": "电子邮件SMTP服务器地址。例如smtp.gmail.com。",
+        "mail_port": "电子邮件服务器SMTP端口，如SSL的994。",
+        "mail_passwd": "电子邮件账户密码。",
+        "enable_ssl": "给邮件服务启用SSL加密。"
+    }
+}
