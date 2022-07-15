@@ -1,0 +1,3 @@
+[submodule "Java/jvision"]
+	path = Java/jvision
+	url = git@github.com:GCS-ZHN/jvision.git
