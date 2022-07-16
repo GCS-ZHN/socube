@@ -21,6 +21,11 @@
 # SOFTWARE.
 
 from setuptools import setup, find_packages
+from src.socube import (
+    __version__, 
+    __author__, 
+    __email__, 
+    __url__)
 
 install_requires = [
     "anndata>=0.7.8",
@@ -40,6 +45,10 @@ install_requires = [
 ]
 
 setup(
+    author=__author__,
+    author_email=__email__,
+    url=__url__,
+    version=__version__,
     package_dir={"": "src"},
     packages=find_packages(where="src"),
     include_package_data=True,

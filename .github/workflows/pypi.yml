@@ -5,7 +5,7 @@ on:
   # 当 提交到当前仓库时立即运行
   push:
     tags:
-      - 'v-pypi-*'
+      - 'v*'
 
 jobs:
   # 自动打卡任务
@@ -14,20 +14,21 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: GCS-ZHN/checkout@v3
-
-      - name: "Get version"
-        id: get_version
-        run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\/v-pypi-*/}
+      - uses: actions/checkout@v3
 
       - name: "Setup Python"
-        uses: GCS-ZHN/setup-python@v4
+        uses: actions/setup-python@v4
         with:
            python-version: '3.8'
            architecture: "x64"
       
       - name: "Which python"
         run: "which python && which pip"
+
+      - name: "Version check"
+        run: python test/version_check.py
+        env:
+          PYTHONPATH: ${{ github.workspace }}
 
       - name: "Setup build"
         run: "pip install build"
@@ -40,7 +41,7 @@ jobs:
 
       - name: "Release socube"
 
-        uses: GCS-ZHN/gh-action-pypi-publish@release/v1
+        uses: pypa/gh-action-pypi-publish@release/v1
         with: 
           user: __token__
           password: ${{ secrets.PYPI_API_TOKEN }}
