@@ -14,4 +14,4 @@ jobs:
       with:
         token: ${{ secrets.PERSONAL_TOKEN }}
         source_branch: main
-        publish_repo: GCS-ZHN/SoCube
+        publish_repo: GCS-ZHN/socube
