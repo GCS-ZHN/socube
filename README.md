@@ -5,6 +5,9 @@
 
 <img src="fig/workflow.svg" alt="SoCube Workflow">
 
+## Introduction
+SoCube was a end-to-end doublet detection tools with novel feature embedding strategy. [User manual](https://www.gcszhn.top/SoCube/) is published on this repo's github page.
+
 ## 1. Installment
 
 ### Requirement
