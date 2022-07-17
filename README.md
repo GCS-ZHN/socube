@@ -6,7 +6,7 @@
 <img src="fig/workflow.svg" alt="SoCube Workflow">
 
 ## Introduction
-SoCube was a end-to-end doublet detection tools with novel feature embedding strategy. [User manual](https://www.gcszhn.top/SoCube/) is published on this repo's github page.
+SoCube was a end-to-end doublet detection tools with novel feature embedding strategy. [User manual](https://www.gcszhn.top/socube/) is published on this repo's github page.
 
 ## 1. Installment
 
@@ -20,7 +20,7 @@ pip install torch==1.8.1+cu111 torchvision==0.9.1+cu111 -f https://download.pyto
 ### 1.1 As a python package
 You can install as python package with following steps.
 ```bash
-git clone https://github.com/GCS-ZHN/SoCube.git
+git clone https://github.com/GCS-ZHN/socube.git
 cd SoCube
 conda create -n socube python=3.8.11
 conda activate socube
@@ -41,7 +41,7 @@ sudo docker pull gcszhn/socube:latest
 ```
 Besides, you can build a docker container by yourself
 ```bash
-git clone https://github.com/GCS-ZHN/SoCube.git
+git clone https://github.com/GCS-ZHN/socube.git
 cd SoCube
 sudo docker build docker -t gcszhn/socube
 ```
@@ -68,7 +68,7 @@ docker run \
 ### 1.3 Just use it without installing to python
 You can download source code and install requirements and use it
 ```bash
-git clone https://github.com/GCS-ZHN/SoCube.git
+git clone https://github.com/GCS-ZHN/socube.git
 cd SoCube
 # conda virtual environment is advised inplace of base env
 conda create -n socube python=3.8.11
