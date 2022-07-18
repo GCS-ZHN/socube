@@ -11,7 +11,7 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Disable livereload
-      run: sed "s/\"livereload\"/\"-livereload\"/" <book.json >tmp && mv -f tmp book.json
+      run: sed "s/\"livereload\"/\"-livereload\"/" <book.json >tmp && mv -f tmp book.json && cat book.json
 
     - name: Gitbook Action
       uses: ZanderZhao/gitbook-action@v1.2.4
