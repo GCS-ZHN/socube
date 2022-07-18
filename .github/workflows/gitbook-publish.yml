@@ -9,6 +9,10 @@ jobs:
     steps:
     - name: Checkout action
       uses: actions/checkout@v2
+
+    - name: Disable livereload
+      run: sed "s/\"livereload\"/\"-livereload\"/" <book.json >tmp && mv -f tmp book.json
+
     - name: Gitbook Action
       uses: ZanderZhao/gitbook-action@v1.2.4
       with:
