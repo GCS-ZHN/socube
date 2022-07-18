@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>软件使用 · SoCube user manual</title>
+        <title>参数详解 · SoCube user manual</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -69,10 +69,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="shu-yu.html" />
+    <link rel="next" href="term.html" />
     
     
-    <link rel="prev" href="ruan-jian-an-zhuang.html" />
+    <link rel="prev" href="5-problem-solution.html" />
     
 
     </head>
@@ -114,12 +114,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2" data-path="ruan-jian-gai-kuo.html">
+        <li class="chapter " data-level="1.2" data-path="2-requirement.html">
             
-                <a href="ruan-jian-gai-kuo.html">
+                <a href="2-requirement.html">
             
                     
-                    软件概括
+                    环境依赖
             
                 </a>
             
@@ -127,9 +127,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3" data-path="ruan-jian-an-zhuang.html">
+        <li class="chapter " data-level="1.3" data-path="3-install.html">
             
-                <a href="ruan-jian-an-zhuang.html">
+                <a href="3-install.html">
             
                     
                     软件安装
@@ -140,9 +140,9 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.4" data-path="ruan-jian-shi-yong.html">
+        <li class="chapter " data-level="1.4" data-path="4-usage.html">
             
-                <a href="ruan-jian-shi-yong.html">
+                <a href="4-usage.html">
             
                     
                     软件使用
@@ -153,9 +153,35 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5" data-path="shu-yu.html">
+        <li class="chapter " data-level="1.5" data-path="5-problem-solution.html">
             
-                <a href="shu-yu.html">
+                <a href="5-problem-solution.html">
+            
+                    
+                    问题解决
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.6" data-path="6-parameters.html">
+            
+                <a href="6-parameters.html">
+            
+                    
+                    参数详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="term.html">
+            
+                <a href="term.html">
             
                     
                     术语
@@ -166,9 +192,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6" data-path="can-kao-zi-liao.html">
+        <li class="chapter " data-level="1.8" data-path="reference.html">
             
-                <a href="can-kao-zi-liao.html">
+                <a href="reference.html">
             
                     
                     参考资料
@@ -209,7 +235,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >软件使用</a>
+        <a href="." >参数详解</a>
     </h1>
 </div>
 
@@ -224,82 +250,92 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="&#x8F6F;&#x4EF6;&#x4F7F;&#x7528;">&#x8F6F;&#x4EF6;&#x4F7F;&#x7528;</h1>
-<h3 id="41-&#x57FA;&#x672C;&#x4F7F;&#x7528;">4.1 &#x57FA;&#x672C;&#x4F7F;&#x7528;</h3>
-<p>&#xFF08;1&#xFF09;&#x51C6;&#x5907;&#x8F93;&#x5165;&#x6570;&#x636E;&#x7684;&#x683C;&#x5F0F;</p>
-<p>SoCube&#x7684;&#x6570;&#x636E;&#x8F93;&#x5165;&#x662F;scRNA-seq&#x7684;UMI&#x8BA1;&#x6570;&#x77E9;&#x9635;&#xFF0C;&#x5176;&#x884C;&#x4E3A;&#x7EC6;&#x80DE;&#xFF0C;&#x5217;&#x4E3A;&#x57FA;&#x56E0;&#xFF0C;&#x503C;&#x4E3A;UMI&#x8BA1;&#x6570;&#x3002;SoCube&#x63A5;&#x53D7;&#x4E24;&#x79CD;&#x6570;&#x636E;&#x683C;&#x5F0F;&#xFF1A;&#xFF08;1&#xFF09;Python pandas&#x5E93;&#x4FDD;&#x5B58;&#x7684;<strong>HDF5&#x683C;&#x5F0F;</strong>DataFrame&#x5BF9;&#x8C61;&#xFF1B;&#xFF08;2&#xFF09;Python anndata&#x5E93;&#x4FDD;&#x5B58;&#x7684;<strong>H5AD&#x683C;&#x5F0F;</strong>&#xFF08;&#x4E00;&#x79CD;&#x5B9A;&#x5236;&#x5316;&#x7684;HDF5&#x683C;&#x5F0F;&#xFF09;AnnData&#x5BF9;&#x8C61;&#x3002;&#x4ECE;&#x4E8B;&#x5355;&#x7EC6;&#x80DE;&#x7EC4;&#x5B66;&#x9886;&#x57DF;&#x7814;&#x7A76;&#x7684;&#x4EBA;&#x90FD;&#x5177;&#x6709;&#x4E00;&#x5B9A;&#x7684;&#x6570;&#x636E;&#x5904;&#x7406;&#x57FA;&#x7840;&#xFF0C;&#x56E0;&#x6B64;&#x672C;&#x624B;&#x518C;&#x4E0D;&#x5177;&#x4F53;&#x4ECB;&#x7ECD;&#x5982;&#x4F55;&#x4ECE;&#x5176;&#x4ED6;&#x683C;&#x5F0F;&#x8F6C;&#x5316;&#x4E3A;&#x4E0A;&#x8FF0;&#x683C;&#x5F0F;&#x3002;</p>
-<p>&#xFF08;2&#xFF09;&#x8FD0;&#x884C;SoCube</p>
-<p>SoCube&#x548C;&#x524D;&#x9762;&#x63D0;&#x5230;&#x7684;pip&#x4E00;&#x6837;&#xFF0C;&#x8FD0;&#x884C;&#x4E8E;&#x7EC8;&#x7AEF;&#x4E0B;&#xFF0C;&#x8FD9;&#x6837;&#x7684;&#x4F18;&#x52BF;&#x5728;&#x4E8E;&#x53EF;&#x4EE5;&#x8FD0;&#x884C;&#x5728;&#x5F88;&#x591A;&#x6CA1;&#x6709;GUI&#x9875;&#x9762;&#x7684;&#x670D;&#x52A1;&#x5668;&#x4E0A;&#xFF0C;&#x800C;&#x4E0D;&#x53D7;GUI&#x9650;&#x5236;&#x3002;&#x5047;&#x8BBE;&#x8F93;&#x5165;&#x6587;&#x4EF6;&#x4E3A;&quot;D:\data\pbmc-1C-dm.h5ad&quot;&#xFF0C;&#x5219;&#x53EF;&#x4EE5;&#x5728;&#x7EC8;&#x7AEF;&#x8F93;&#x5165;&#x4E0B;&#x9762;&#x547D;&#x4EE4;&#x8FD0;&#x884C;&#x8F6F;&#x4EF6;&#xFF0C;&#x7136;&#x540E;&#x5C31;&#x4F1A;&#x770B;&#x5230;&#x8F6F;&#x4EF6;&#x542F;&#x52A8;&#x5E76;&#x5728;&#x7EC8;&#x7AEF;&#x8F93;&#x51FA;&#x65E5;&#x5FD7;&#x3002;&#x53C2;&#x6570;-i&#xFF08;&#x6216;&#x8005;--input&#xFF09;&#x8868;&#x793A;&#x6307;&#x5B9A;&#x8F93;&#x5165;&#x6587;&#x4EF6;&#x3002;</p>
-<pre class="language-"><code class="lang-powershell">socube <span class="token operator">--</span>input <span class="token string">&quot;D:\data\pbmc-1C-dm.h5ad&quot;</span>
-</code></pre>
-<figure id="fig1.4.1"><img src="assets/fig5.png" alt="&#x542F;&#x52A8;socube"><figcaption>&#x542F;&#x52A8;socube</figcaption></figure>
-<p>&#x7B49;&#x5F85;&#x8F6F;&#x4EF6;&#x8FD0;&#x884C;&#x5B8C;&#x6BD5;&#xFF0C;&#x4E8C;&#x805A;&#x4F53;&#x68C0;&#x6D4B;&#x7ED3;&#x679C;&#x4EE5;&#x53CA;&#x4E2D;&#x95F4;&#x6587;&#x4EF6;&#x9ED8;&#x8BA4;&#x4F1A;&#x548C;&#x8F93;&#x5165;&#x6587;&#x4EF6;&#x653E;&#x5728;&#x4E00;&#x8D77;&#xFF0C;&#x4EA7;&#x751F;embedding&#x3001;plots&#x3001;models&#x3001;outputs&#x8FD9;&#x51E0;&#x4E2A;&#x6587;&#x4EF6;&#x5939;&#x3002;&#x5176;&#x4E2D;&#x6700;&#x7EC8;&#x7ED3;&#x679C;&#x5728;&#x201C;outputs/&#x4F60;&#x7684;&#x6A21;&#x578B;ID/&#x201D;&#x6587;&#x4EF6;&#x5939;&#x4E0B;&#x4EE5;&#x201C;final_result&#x201D;&#x5F00;&#x5934;&#x7684;CSV&#x6587;&#x4EF6;&#x4E2D;&#x3002;&#x7528;Excel&#x7535;&#x5B50;&#x8868;&#x683C;&#x8F6F;&#x4EF6;&#x6253;&#x5F00;&#xFF0C;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x5176;&#x6709;&#x4E0B;&#x56FE;&#x4E09;&#x5217;&#x3002;&#x7B2C;&#x4E00;&#x5217;&#x662F;&#x8F93;&#x5165;&#x6570;&#x636E;&#x7684;&#x7EC6;&#x80DE;&#x6837;&#x672C;&#x540D;&#x79F0;&#xFF0C;&#x7531;&#x7528;&#x6237;&#x7684;&#x8F93;&#x5165;&#x51B3;&#x5B9A;&#xFF1B;&#x7B2C;&#x4E8C;&#x5217;&#x662F;SoCube&#x9884;&#x6D4B;&#x8BE5;&#x6837;&#x672C;&#x4E3A;&#x4E8C;&#x805A;&#x4F53;&#x7684;&#x6982;&#x7387;&#x503C;&#xFF0C;&#x5927;&#x5C0F;&#x4ECB;&#x4E8E;0~1&#x4E4B;&#x95F4;&#xFF1B;&#x7B2C;&#x4E09;&#x5217;&#x662F;SoCube&#x57FA;&#x4E8E;&#x7528;&#x6237;&#x7ED9;&#x5B9A;&#x6982;&#x7387;&#x9608;&#x503C;&#x6216;&#x8005;&#x9ED8;&#x8BA4;&#x9608;&#x503C;0.5&#x5F97;&#x51FA;&#x7684;&#x7C7B;&#x578B;&#x9884;&#x6D4B;&#xFF0C;singlet&#x5373;&#x5355;&#x4F53;&#x6B63;&#x5E38;&#x7EC6;&#x80DE;&#xFF0C;doublet&#x5373;&#x4E8C;&#x805A;&#x4F53;&#x3002;&#x7528;&#x6237;&#x65E2;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x6982;&#x7387;&#x503C;&#x8FDB;&#x884C;&#x540E;&#x7EED;&#x81EA;&#x5B9A;&#x4E49;&#x7B5B;&#x9009;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x5229;&#x7528;&#x7B2C;&#x4E09;&#x5217;&#x8FDB;&#x884C;&#x76F4;&#x63A5;&#x7B5B;&#x9009;&#x3002;</p>
-<figure id="fig1.4.2"><img src="assets/fig6.png" alt="final\_result&#x7684;&#x7684;CSV&#x6587;&#x4EF6;&#x6587;&#x4EF6;"><figcaption>final\_result&#x7684;&#x7684;CSV&#x6587;&#x4EF6;&#x6587;&#x4EF6;</figcaption></figure>
-<p>&#xFF08;3&#xFF09;GPU&#x52A0;&#x901F;&#x8FD0;&#x7B97;&#xFF08;&#x5982;&#x679C;&#x8BBE;&#x5907;&#x62E5;&#x6709;&#x72EC;&#x7ACB;NVIDIA&#x663E;&#x5361;&#xFF09;</p>
-<p>&#x5982;&#x679C;&#x7528;&#x6237;&#x914D;&#x7F6E;&#x4E86;&#x6B63;&#x786E;&#x7684;CUDA&#xFF0C;&#x4F1A;&#x6536;&#x5230;&#x201C;Using CPU training, but GPU is available, specify &#x2018;&#x2014;gpu-ids&#x2019; to use GPU&#x201D;&#x7684;&#x63D0;&#x793A;&#x3002;&#x7528;&#x6237;&#x53EA;&#x9700;&#x8981;&#x5728;&#x524D;&#x8FF0;&#x547D;&#x4EE4;&#x7684;&#x57FA;&#x7840;&#x4E0A;&#xFF0C;&#x589E;&#x52A0;&#x6307;&#x5B9A;&#x53C2;&#x6570;&#x201C;&#x2014;gpu-ids&#x201D;&#x6765;&#x6307;&#x5B9A;&#x8981;&#x4F7F;&#x7528;&#x7684;GPU&#x3002;GPU&#x7684;ID&#x53EF;&#x4EE5;&#x5728;&#x524D;&#x9762;&#x8BF4;&#x5230;&#x7684;nvidia-smi&#x547D;&#x4EE4;&#x8F93;&#x51FA;&#x4E2D;&#x770B;&#x5230;&#xFF0C;0,1,2&#xFF0C;&#x2026;&#x5206;&#x522B;&#x8868;&#x793A;&#x7B2C;1,2,3&#x2026;&#x5757;GPU&#xFF08;&#x591A;&#x5757;&#x7684;GPU&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF09;</p>
-<pre class="language-"><code class="lang-powershell">socube <span class="token operator">-</span>i <span class="token string">&quot;D:\data\pbmc-1C-dm.h5ad&quot;</span> <span class="token operator">--</span>gpu-ids <span class="token string">&quot;0,1&quot;</span>
-</code></pre>
-<p>&#xFF08;4&#xFF09;&#x57FA;&#x4E8E;docker&#x7684;&#x4F7F;&#x7528;</p>
-<p>&#x548C;&#x524D;&#x9762;pip&#x5B89;&#x88C5;&#x540E;&#x4F7F;&#x7528;&#x672C;&#x8D28;&#x4E0A;&#x4E00;&#x6837;&#x7684;&#xFF0C;&#x4F46;&#x9700;&#x8981;&#x901A;&#x8FC7;docker&#x6765;&#x542F;&#x52A8;&#x5BB9;&#x5668;&#xFF0C;&#x56E0;&#x6B64;&#x6709;&#x4E00;&#x5B9A;&#x533A;&#x522B;&#x3002;</p>
-<p><div class="markdown-tabs"><ul class="nav nav-tabs" role="tablist"><li role="presentation" class="active"><a href="#tab-113" aria-controls="tab-113" role="tab" data-toggle="tab">PowerShell</a></li><li role="presentation" class=""><a href="#tab-114" aria-controls="tab-114" role="tab" data-toggle="tab">Bash</a></li></ul><div class="tab-content"><div role="tabpanel" class="tab-pane active" id="tab-113"><pre class="language-"><code class="lang-powershell">docker run <span class="token operator">-</span>v D:<span class="token operator">/</span><span class="token keyword">data</span>:<span class="token operator">/</span>workspace/datasets `
-       &#x2013;gpus all `
-       &#x2013;name socube `
-       gcszhn/socube:latest `
-       <span class="token operator">-</span>input <span class="token string">&quot;datasets/pbmc.h5ad&quot;</span> `
-       &#x2013;gpu-ids <span class="token string">&quot;0,1&quot;</span></code></pre>
-</div><div role="tabpanel" class="tab-pane " id="tab-114"><pre class="language-"><code class="lang-bash"><span class="token function">docker</span> run -v /data:/workspace/datasets <span class="token punctuation">\</span>
-       &#x2013;gpus all <span class="token punctuation">\</span>
-       &#x2013;name socube <span class="token punctuation">\</span>
-       gcszhn/socube:latest <span class="token punctuation">\</span>
-       -input <span class="token string">&quot;datasets/pbmc.h5ad&quot;</span> <span class="token punctuation">\</span>
-       &#x2013;gpu-ids <span class="token string">&quot;0,1&quot;</span></code></pre>
-</div></div></div></p>
-<p>&#x5176;&#x4E2D;&#x201C;gcszhn/socube:latest&#x201D;&#x662F;&#x955C;&#x50CF;&#x540D;&#x79F0;&#xFF0C;&#x524D;&#x9762;&#x7684;&#x662F;docker&#x542F;&#x52A8;&#x53C2;&#x6570;&#xFF0C;&#x5305;&#x62EC;&#x6587;&#x4EF6;&#x5939;&#x6620;&#x5C04;&#x548C;GPU&#x6302;&#x8F7D;&#xFF0C;&#x540E;&#x9762;&#x5373;SoCube&#x7684;&#x53C2;&#x6570;&#xFF0C;&#x4F7F;&#x7528;&#x4E0E;&#x524D;&#x6587;&#x4E00;&#x81F4;&#x3002;&#x7528;&#x6237;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;<code>docker images</code>&#x6765;&#x67E5;&#x770B;&#x955C;&#x50CF;&#x540D;&#x79F0;&#x3002;</p>
-<p><img src="file:///C:/Users/zhang/AppData/Local/Temp/msohtmlclip1/01/clip\_image014.png" alt=""></p>
-<h3 id="42&#x8F6F;&#x4EF6;&#x53C2;&#x6570;&#x8BE6;&#x89E3;">4.2&#x8F6F;&#x4EF6;&#x53C2;&#x6570;&#x8BE6;&#x89E3;</h3>
-<p>SoCube&#x7684;&#x6240;&#x6709;&#x8F6F;&#x4EF6;&#x53C2;&#x6570;&#x5E2E;&#x52A9;&#x53EF;&#x4EE5;&#x5728;&#x7EC8;&#x7AEF;&#x6267;&#x884C;<code>socube --help</code>&#x5F97;&#x5230;&#xFF0C;&#x8FD9;&#x91CC;&#x5BF9;&#x5B83;&#x8FDB;&#x884C;&#x8BE6;&#x89E3;&#x3002;</p>
+                                <h1 id="&#x53C2;&#x6570;&#x8BE6;&#x89E3;">&#x53C2;&#x6570;&#x8BE6;&#x89E3;</h1>
+<p>SoCube&#x7684;&#x6240;&#x6709;&#x8F6F;&#x4EF6;&#x53C2;&#x6570;&#x5E2E;&#x52A9;&#x53EF;&#x4EE5;&#x5728;&#x7EC8;&#x7AEF;&#x6267;&#x884C;<code>socube --help</code>&#x5F97;&#x5230;&#xFF0C;&#x8FD9;&#x91CC;&#x5BF9;&#x5B83;&#x8FDB;&#x884C;&#x8BE6;&#x89E3;&#x3002;socube&#x7684;help&#x6587;&#x6863;&#x8F93;&#x51FA;&#x4F1A;&#x6839;&#x636E;&#x7528;&#x6237;&#x7CFB;&#x7EDF;&#x7684;&#x8BED;&#x8A00;&#x4E0E;&#x533A;&#x57DF;&#x8BBE;&#x7F6E;&#x81EA;&#x52A8;&#x9009;&#x62E9;&#x4E2D;&#x6587;&#x6216;&#x8005;&#x82F1;&#x6587;&#x3002;&#x5982;&#x6709;&#x5FC5;&#x8981;&#xFF0C;&#x7528;&#x6237;&#x53EF;&#x4EE5;&#x4FEE;&#x6539;&#x7CFB;&#x7EDF;&#x8BED;&#x8A00;&#x8BBE;&#x7F6E;&#x5207;&#x6362;&#xFF0C;&#x4F8B;&#x5982;linux&#x4E0B;&#x8BBE;&#x7F6E;<code>LC_ALL</code>&#x73AF;&#x5883;&#x53D8;&#x91CF;&#x4E3A;<code>en_US</code>&#x3002;</p>
 <p><img src="assets/fig9.png" alt=""></p>
-<p>&#xFF08;1&#xFF09;--input</p>
+<ol>
+<li>--input</li>
+</ol>
 <p>&#x7B80;&#x5199;&#x4E3A;&#x201C;-i&#x201D;&#x3002;&#x5982;&#x524D;&#x6240;&#x8FF0;&#xFF0C;&#x8BE5;&#x53C2;&#x6570;&#x7528;&#x4E8E;&#x6307;&#x5B9A;&#x6570;&#x636E;&#x8F93;&#x5165;&#x6587;&#x4EF6;&#xFF0C;&#x53EF;&#x4EE5;&#x63A5;&#x6536;&#x4E24;&#x79CD;&#x6570;&#x636E;&#x683C;&#x5F0F;&#xFF0C;&#x8FD9;&#x91CC;&#x4E0D;&#x518D;&#x8D58;&#x8FF0;&#x3002;</p>
-<p>&#xFF08;2&#xFF09;--output</p>
+<ol>
+<li>--output</li>
+</ol>
 <p>&#x7B80;&#x5199;&#x4E3A;&#x201C;-o&#x201D;&#x3002;&#x8BE5;&#x53C2;&#x6570;&#x7528;&#x4E8E;&#x81EA;&#x5B9A;&#x4E49;&#x7ED3;&#x679C;&#x7684;&#x8F93;&#x51FA;&#x8DEF;&#x5F84;&#xFF0C;&#x8DEF;&#x5F84;&#x4E0D;&#x5B58;&#x5728;&#x4F1A;&#x81EA;&#x52A8;&#x521B;&#x5EFA;&#x3002;&#x5982;&#x524D;&#x6240;&#x8FF0;&#xFF0C;&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x7ED3;&#x679C;&#x8F93;&#x51FA;&#x4F1A;&#x4E0E;&#x8F93;&#x5165;&#x6587;&#x4EF6;&#x5728;&#x76F8;&#x540C;&#x76EE;&#x5F55;&#xFF0C;&#x7528;&#x6237;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x8BE5;&#x53C2;&#x6570;&#x6765;&#x81EA;&#x5B9A;&#x4E49;&#x3002;&#x4F8B;&#xFF1A;--output D:/data/</p>
-<p>&#xFF08;3&#xFF09;--gpu-ids</p>
+<ol>
+<li>--gpu-ids</li>
+</ol>
 <p>&#x5982;&#x524D;&#x6240;&#x8FF0;&#xFF0C;&#x8BE5;&#x53C2;&#x6570;&#x7528;&#x4E8E;&#x6307;&#x5B9A;&#x53C2;&#x4E0E;&#x8BA1;&#x7B97;&#x52A0;&#x901F;&#x7684;GPU&#x8BBE;&#x5907;&#x5E8F;&#x53F7;&#x3002;&#x53EF;&#x4EE5;&#x662F;&#x5355;&#x4E2A;&#x5E8F;&#x53F7;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x662F;&#x4EE5;&#x9017;&#x53F7;&#x5206;&#x9694;&#x7684;&#x591A;&#x4E2A;&#x5E8F;&#x53F7;&#xFF0C;&#x6CE8;&#x610F;&#x9017;&#x53F7;&#x4E3A;&#x82F1;&#x6587;&#x9017;&#x53F7;&#x4E14;&#x65E0;&#x7A7A;&#x683C;&#xFF0C;&#x9ED8;&#x8BA4;&#x4E0D;&#x8BBE;&#x7F6E;&#xFF0C;&#x4F7F;&#x7528;CPU&#x3002;&#x4F8B;&#xFF1A;--gpu-ids 0,1,2&#x3002;</p>
-<p>&#xFF08;4&#xFF09;--seed</p>
+<ol>
+<li>--seed</li>
+</ol>
 <p>&#x8BE5;&#x53C2;&#x6570;&#x7528;&#x4E8E;&#x6307;&#x5B9A;&#x8F6F;&#x4EF6;&#x8BA1;&#x7B97;&#x4E2D;&#x968F;&#x673A;&#x8FC7;&#x7A0B;&#x7684;&#x968F;&#x673A;&#x6570;&#x79CD;&#x5B50;&#xFF0C;&#x9ED8;&#x8BA4;&#x4E3A;&#x4E0D;&#x8BBE;&#x7F6E;&#x3002;&#x4F8B;&#xFF1A;--seed 4067&#x3002;</p>
-<p>&#xFF08;5&#xFF09;--k</p>
+<ol>
+<li>--k</li>
+</ol>
 <p>&#x8BE5;&#x53C2;&#x6570;&#x7528;&#x4E8E;&#x6307;&#x5B9A;&#x6A21;&#x578B;k&#x6298;&#x4EA4;&#x53C9;&#x8BAD;&#x7EC3;&#x7684;k&#x503C;&#xFF0C;&#x9ED8;&#x8BA4;&#x4E3A;5&#x3002;&#x4F8B;&#xFF1A;--k 4&#x3002;</p>
-<p>&#xFF08;6&#xFF09;--adj-factor</p>
+<ol>
+<li>--adj-factor</li>
+</ol>
 <p>&#x8BE5;&#x53C2;&#x6570;&#x4E8C;&#x805A;&#x4F53;&#x8868;&#x8FBE;&#x6C34;&#x5E73;&#x7684;&#x8C03;&#x6574;&#x7CFB;&#x6570;&#x3002;&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x5047;&#x5B9A;&#x4E8C;&#x805A;&#x4F53;&#x7684;&#x8868;&#x8FBE;&#x6C34;&#x5E73;&#x662F;&#x5355;&#x4F53;&#x7684;&#x4E24;&#x500D;&#xFF0C;&#x4F46;&#x5B9E;&#x9645;&#x60C5;&#x51B5;&#x5B58;&#x5728;&#x6CE2;&#x52A8;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x8C03;&#x6574;&#x8FD9;&#x4E2A;&#x7CFB;&#x6570;&#x6539;&#x53D8;&#x8868;&#x8FBE;&#x6C34;&#x5E73;&#x3002;&#x9ED8;&#x8BA4;&#x4E3A;1.0&#x3002;&#x4F8B;&#xFF1A;--adj-factor 0.8&#x3002;</p>
-<p>&#xFF08;7&#xFF09;--dim</p>
+<ol>
+<li>--dim</li>
+</ol>
 <p>&#x8BE5;&#x53C2;&#x6570;&#x7528;&#x4E8E;&#x6307;&#x5B9A;&#x6784;&#x5EFA;&#x7279;&#x5F81;&#x7684;&#x901A;&#x9053;&#x6570;&#xFF0C;&#x4E5F;&#x662F;&#x57FA;&#x56E0;&#x7279;&#x5F81;&#x964D;&#x7EF4;&#x7684;&#x76EE;&#x6807;&#x7EF4;&#x6570;&#xFF0C;&#x9ED8;&#x8BA4;&#x4E3A;10&#x3002;&#x4F8B;&#xFF1A;--dim 5&#x3002;</p>
-<p>&#xFF08;8&#xFF09;--cube-id</p>
+<ol>
+<li>--cube-id</li>
+</ol>
 <p>&#x8BE5;&#x53C2;&#x6570;&#x7528;&#x4E8E;&#x590D;&#x7528;&#x6B64;&#x524D;&#x4EA7;&#x751F;&#x7684;&#x7279;&#x5F81;&#x3002;&#x6240;&#x6709;&#x7279;&#x5F81;&#x4F1A;&#x4FDD;&#x5B58;&#x5728;embedding&#x5B50;&#x76EE;&#x5F55;&#x4E0B;&#x3002;&#x8BE5;&#x53C2;&#x6570;&#x5373;&#x4E3A;&#x8BE5;&#x5B50;&#x76EE;&#x5F55;&#x4E0B;&#x5177;&#x4F53;&#x7279;&#x5F81;&#x7684;ID&#xFF0C;&#x4E3A;&#x201C;XXXXXX-XXXXXX-XXX&#x201D;&#x6837;&#x5F0F;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x3002;&#x3002;&#x4F8B;&#xFF1A;--cube-id 20220704-120122-854.&#x3002;</p>
-<p>&#xFF08;9&#xFF09;--learning-rate</p>
+<ol>
+<li>--learning-rate</li>
+</ol>
 <p>&#x7B80;&#x5199;&#x4E3A;&#x201C;-lr&#x201D;&#x3002;&#x4EBA;&#x5DE5;&#x667A;&#x80FD;&#x6DF1;&#x5EA6;&#x795E;&#x7ECF;&#x7F51;&#x7EDC;&#x7684;&#x8BAD;&#x7EC3;&#x5B66;&#x4E60;&#x7387;&#x3002;&#x8BE5;&#x53C2;&#x6570;&#x5BF9;&#x68C0;&#x6D4B;&#x6548;&#x679C;&#x4F1A;&#x6709;&#x663E;&#x8457;&#x5F71;&#x54CD;&#x3002;&#x9ED8;&#x8BA4;&#x503C;&#x4E3A;1e-3&#xFF0C;&#x5982;&#x679C;&#x7528;&#x6237;&#x89C9;&#x5F97;&#x6709;&#x5FC5;&#x8981;&#xFF0C;&#x53EF;&#x4EE5;&#x81EA;&#x5B9A;&#x4E49;&#x3002;&#x4F8B;&#xFF1A;--learning-rate 1e-4&#x3002;</p>
-<p>&#xFF08;10&#xFF09;--epochs</p>
+<ol>
+<li>--epochs</li>
+</ol>
 <p>&#x7B80;&#x5199;&#x4E3A;&#x201C;-e&#x201D;&#x3002;&#x8BE5;&#x53C2;&#x6570;&#x6307;&#x7684;&#x662F;&#x795E;&#x7ECF;&#x7F51;&#x7EDC;&#x8BAD;&#x7EC3;&#x7684;&#x6700;&#x5927;&#x8F6E;&#x6570;&#x3002;&#x4F46;&#x4E00;&#x822C;&#x800C;&#x8A00;&#xFF0C;&#x4F1A;&#x5728;&#x8FBE;&#x5230;&#x9ED8;&#x8BA4;&#x6700;&#x5927;&#x8F6E;&#x6570;100&#x524D;&#x5B8C;&#x6210;&#x8BAD;&#x7EC3;&#x3002;&#x4F8B;&#xFF1A;--epochs 50&#x3002;</p>
-<p>&#xFF08;11&#xFF09;--train-batch-size</p>
+<ol>
+<li>--train-batch-size</li>
+</ol>
 <p>&#x8BE5;&#x53C2;&#x6570;&#x7528;&#x4E8E;&#x6307;&#x5B9A;&#x795E;&#x7ECF;&#x7F51;&#x7EDC;&#x8BAD;&#x7EC3;&#x7684;&#x6279;&#x6B21;&#x6570;&#x636E;&#x96C6;&#x5927;&#x5C0F;&#xFF0C;&#x9ED8;&#x8BA4;&#x4E3A;64&#x3002;&#x6279;&#x6B21;&#x6570;&#x636E;&#x96C6;&#x5927;&#x5C0F;&#x8F83;&#x5927;&#xFF0C;&#x8BAD;&#x7EC3;&#x6548;&#x679C;&#x5F80;&#x5F80;&#x8F83;&#x597D;&#xFF0C;&#x4F46;&#x5360;&#x7528;CPU&#x5185;&#x5B58;&#x6216;&#x8005;GPU&#x663E;&#x5B58;&#x8F83;&#x5927;&#x3002;&#x7528;&#x6237;&#x53EF;&#x4EE5;&#x6839;&#x636E;&#x81EA;&#x5DF1;&#x8BBE;&#x5907;&#x5B9E;&#x9645;&#x60C5;&#x51B5;&#x505A;&#x51FA;&#x8C03;&#x6574;&#x3002;&#x4F8B;&#xFF1A;--train-batch-size 32&#x3002;</p>
-<p>&#xFF08;12&#xFF09;--valid-batch-size</p>
+<ol>
+<li>--valid-batch-size</li>
+</ol>
 <p>&#x4E0E;&#x524D;&#x7C7B;&#x4F3C;&#xFF0C;&#x8BE5;&#x53C2;&#x6570;&#x7528;&#x4E8E;&#x6307;&#x5B9A;&#x795E;&#x7ECF;&#x7F51;&#x7EDC;&#x9A8C;&#x8BC1;&#x7684;&#x6279;&#x6B21;&#x6570;&#x636E;&#x96C6;&#x5927;&#x5C0F;&#xFF0C;&#x9ED8;&#x8BA4;&#x4E3A;512&#x3002;&#x56E0;&#x4E3A;&#x9A8C;&#x8BC1;&#x8FC7;&#x7A0B;&#x6BD4;&#x8BAD;&#x7EC3;&#x8FC7;&#x7A0B;&#x7684;&#x5185;&#x5B58;&#x6D88;&#x8017;&#x663E;&#x8457;&#x8F83;&#x5C0F;&#xFF0C;&#x56E0;&#x6B64;&#x9ED8;&#x8BA4;&#x503C;&#x8F83;&#x5927;&#x3002;&#x4F8B;&#xFF1A;--valid-batch-size 256&#x3002;</p>
-<p>&#xFF08;13&#xFF09;--infer-batch-size</p>
+<ol>
+<li>--infer-batch-size</li>
+</ol>
 <p>&#x4E0E;&#x524D;&#x7C7B;&#x4F3C;&#xFF0C;&#x8BE5;&#x53C2;&#x6570;&#x7528;&#x4E8E;&#x6307;&#x5B9A;&#x795E;&#x7ECF;&#x7F51;&#x7EDC;&#x9884;&#x6D4B;&#x7684;&#x6279;&#x6B21;&#x6570;&#x636E;&#x96C6;&#x5927;&#x5C0F;&#xFF0C;&#x9ED8;&#x8BA4;&#x4E3A;400&#x3002;&#x4F8B;&#xFF1A;--infer-batch-size 256&#x3002;</p>
-<p>&#xFF08;14&#xFF09;--threshold</p>
+<ol>
+<li>--threshold</li>
+</ol>
 <p>&#x7B80;&#x5199;&#x201C;-t&#x201D;&#x3002;&#x8BE5;&#x53C2;&#x6570;&#x7528;&#x4E8E;&#x6307;&#x5B9A;&#x5206;&#x7C7B;&#x4E8C;&#x805A;&#x4F53;&#x4E0E;&#x5355;&#x4F53;&#x7684;&#x6982;&#x7387;&#x9608;&#x503C;&#xFF0C;&#x9ED8;&#x8BA4;&#x4E3A;0.5&#x3002;&#x6B63;&#x5982;&#x524D;&#x9762;CSV&#x7ED3;&#x679C;&#x6587;&#x4EF6;&#x7684;&#x89E3;&#x91CA;&#xFF0C;&#x5927;&#x4E8E;&#x9608;&#x503C;&#x7684;&#x7EC6;&#x80DE;&#x6837;&#x672C;&#x4F1A;&#x88AB;&#x5224;&#x5B9A;&#x4E3A;&#x4E8C;&#x805A;&#x4F53;&#x3002;&#x4F8B;&#xFF1A;-t 0.5&#x3002;</p>
-<p>&#xFF08;15&#xFF09;--enable-validation</p>
+<ol>
+<li>--enable-validation</li>
+</ol>
 <p>&#x7B80;&#x5199;&#x201C;-ev&#x201D;&#x3002;&#x8BE5;&#x53C2;&#x6570;&#x662F;&#x4F4D;&#x7F6E;&#x53C2;&#x6570;&#xFF0C;&#x65E0;&#x540E;&#x7EED;&#x503C;&#x3002;&#x4F7F;&#x7528;&#x5B83;&#x8868;&#x793A;&#x542F;&#x7528;&#x7ED3;&#x679C;&#x9A8C;&#x8BC1;&#xFF0C;&#x8BE5;&#x529F;&#x80FD;&#x4EC5;&#x7528;&#x4E8E;&#x590D;&#x73B0;&#x7ED3;&#x679C;&#x7684;&#x8BC4;&#x4F30;&#x6307;&#x6807;&#x3002;&#x4F7F;&#x7528;&#x65F6;&#x8981;&#x6C42;&#x6570;&#x636E;&#x8F93;&#x5165;&#x683C;&#x5F0F;&#x4E3A;H5AD&#x683C;&#x5F0F;&#xFF0C;&#x4E14;&#x5728;&#x5176;AnnData&#x5BF9;&#x8C61;&#x7684;&#x201C;obs&#x201D;&#x5C5E;&#x6027;&#x4E2D;&#x6709;&#x201C;type&#x201D;&#x5217;&#xFF0C;&#x5185;&#x5BB9;&#x4E3A;&#x201C;doublet&#x201D;&#x6216;&#x201C;singlet&#x201D;&#xFF0C;&#x8868;&#x793A;&#x8BE5;&#x6570;&#x636E;&#x96C6;&#x7684;&#x771F;&#x5B9E;&#x6807;&#x6CE8;&#x3002;</p>
-<p>&#xFF08;16&#xFF09;--enable-multiprocess</p>
+<ol>
+<li>--enable-multiprocess</li>
+</ol>
 <p>&#x7B80;&#x5199;&#x201C;-mp&#x201D;&#x3002;&#x8BE5;&#x53C2;&#x6570;&#x662F;&#x4F4D;&#x7F6E;&#x53C2;&#x6570;&#xFF0C;&#x65E0;&#x540E;&#x7EED;&#x503C;&#x3002;&#x4F7F;&#x7528;&#x5B83;&#x8868;&#x793A;&#x542F;&#x7528;&#x591A;&#x8FDB;&#x7A0B;&#x8BAD;&#x7EC3;&#x3002;&#x6B64;&#x65F6;SoCube&#x4F1A;&#x521B;&#x5EFA;k&#x4E2A;&#x5B50;&#x8FDB;&#x7A0B;&#x6765;&#x5E76;&#x884C;&#x8BAD;&#x7EC3;k&#x4E2A;&#x5B50;&#x6A21;&#x578B;&#xFF08;k&#x503C;&#x7531;&#x2014;k&#x53C2;&#x6570;&#x6307;&#x5B9A;&#xFF09;&#x3002;&#x591A;&#x8FDB;&#x7A0B;&#x8BAD;&#x7EC3;&#x53EF;&#x4EE5;&#x63D0;&#x9AD8;&#x68C0;&#x6D4B;&#x901F;&#x5EA6;&#xFF0C;&#x4F46;&#x662F;&#x5C5E;&#x4E8E;&#x7A7A;&#x95F4;&#x6362;&#x65F6;&#x95F4;&#xFF0C;&#x4F1A;&#x589E;&#x5927;&#x5185;&#x5B58;&#x548C;&#x663E;&#x5B58;&#x5F00;&#x9500;&#xFF0C;&#x56E0;&#x6B64;&#x7528;&#x6237;&#x9700;&#x8981;&#x6839;&#x636E;&#x81EA;&#x5DF1;&#x7684;&#x6570;&#x636E;&#x96C6;&#x5927;&#x5C0F;&#x4E0E;&#x5185;&#x5B58;&#x5927;&#x5C0F;&#x5224;&#x65AD;&#x662F;&#x5426;&#x5F00;&#x542F;&#x591A;&#x8FDB;&#x7A0B;&#x3002;&#x5F53;&#x7136;&#x7528;&#x6237;&#x53EF;&#x4EE5;&#x8C03;&#x8282;&#x524D;&#x9762;&#x7684;&#x6279;&#x6B21;&#x53C2;&#x6570;&#x6765;&#x964D;&#x4F4E;&#x5185;&#x5B58;&#x5360;&#x7528;&#x3002;</p>
-<p>&#xFF08;17&#xFF09;--mail</p>
+<ol>
+<li>--mail</li>
+</ol>
 <p>&#x8BE5;&#x53C2;&#x6570;&#x6307;&#x5B9A;&#x4E86;&#x7528;&#x4E8E;&#x7ED3;&#x679C;&#x901A;&#x77E5;&#x7684;&#x90AE;&#x7BB1;&#x5730;&#x5740;&#xFF0C;&#x4EFB;&#x4F55;&#x652F;&#x6301;SMTP&#x534F;&#x8BAE;&#x7684;&#x90AE;&#x4EF6;&#x4F9B;&#x5E94;&#x5546;&#x90FD;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#xFF0C;&#x4F8B;&#x5982;QQ&#x90AE;&#x7BB1;&#x3001;Gmail&#x7B49;&#x3002;&#x9700;&#x8981;&#x548C;&#x540E;&#x7EED;&#x51E0;&#x4E2A;&#x90AE;&#x7BB1;&#x53C2;&#x6570;&#x914D;&#x5408;&#x4F7F;&#x7528;&#x3002;</p>
-<p>&#xFF08;18&#xFF09;--mail-server</p>
+<ol>
+<li>--mail-server</li>
+</ol>
 <p>&#x8BE5;&#x53C2;&#x6570;&#x6307;&#x5B9A;&#x4E86;&#x90AE;&#x4EF6;&#x4F9B;&#x5E94;&#x5546;&#x7684;SMTP&#x670D;&#x52A1;&#x5668;&#x57DF;&#x540D;&#x3002;&#x5177;&#x4F53;&#x8BF7;&#x54A8;&#x8BE2;&#x60A8;&#x6240;&#x4F7F;&#x7528;&#x7684;&#x90AE;&#x7BB1;&#x4F9B;&#x5E94;&#x5546;&#x3002;&#x4F8B;&#xFF1A;--mail-server smtp.gmail.com&#x3002;</p>
-<p>&#xFF08;19&#xFF09;--mail-port</p>
+<ol>
+<li>--mail-port</li>
+</ol>
 <p>&#x8BE5;&#x53C2;&#x6570;&#x6307;&#x5B9A;&#x4E86;&#x90AE;&#x4EF6;&#x4F9B;&#x5E94;&#x5546;&#x7684;SMTP&#x670D;&#x52A1;&#x7AEF;&#x53E3;&#x3002;&#x5177;&#x4F53;&#x8BF7;&#x54A8;&#x8BE2;&#x60A8;&#x6240;&#x4F7F;&#x7528;&#x7684;&#x90AE;&#x4EF6;&#x4F9B;&#x5E94;&#x5546;&#x3002;&#x4F8B;&#xFF1A;--mail-port 994&#x3002;</p>
-<p>&#xFF08;20&#xFF09;--mail-passwd</p>
+<ol>
+<li>--mail-passwd</li>
+</ol>
 <p>&#x8BE5;&#x53C2;&#x6570;&#x6307;&#x5B9A;&#x4E86;&#x90AE;&#x7BB1;&#x7684;&#x5BC6;&#x7801;&#x3002;&#x4E00;&#x822C;&#x5C31;&#x662F;&#x7F51;&#x9875;&#x90AE;&#x7BB1;&#x7684;&#x767B;&#x5F55;&#x5BC6;&#x7801;&#xFF0C;&#x4F46;&#x90AE;&#x4EF6;&#x4F9B;&#x5E94;&#x5546;&#x53E6;&#x6709;&#x7EA6;&#x5B9A;&#x7684;&#x9664;&#x5916;&#xFF0C;&#x5177;&#x4F53;&#x8BF7;&#x54A8;&#x8BE2;&#x60A8;&#x6240;&#x4F7F;&#x7528;&#x7684;&#x90AE;&#x4EF6;&#x4F9B;&#x5E94;&#x5546;&#x3002;</p>
-<p>&#xFF08;21&#xFF09;--enable-ssl</p>
+<ol>
+<li>--enable-ssl</li>
+</ol>
 <p>&#x542F;&#x7528;&#x8BE5;&#x53C2;&#x6570;&#x4EE3;&#x8868;&#x90AE;&#x4EF6;&#x670D;&#x52A1;&#x4F7F;&#x7528;SSL&#x52A0;&#x5BC6;&#x3002;</p>
 
 <script>console.log("plugin-popup....");document.onclick = function(e){ e.target.tagName === "IMG" && window.open(e.target.src,e.target.src)}</script><style>img{cursor:pointer}</style>
@@ -329,12 +365,12 @@
 
             
                 
-                <a href="ruan-jian-an-zhuang.html" class="navigation navigation-prev " aria-label="Previous page: 软件安装">
+                <a href="5-problem-solution.html" class="navigation navigation-prev " aria-label="Previous page: 问题解决">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="shu-yu.html" class="navigation navigation-next " aria-label="Next page: 术语">
+                <a href="term.html" class="navigation navigation-next " aria-label="Next page: 术语">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -345,7 +381,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"软件使用","level":"1.4","depth":1,"next":{"title":"术语","level":"1.5","depth":1,"path":"shu-yu.md","ref":"shu-yu.md","articles":[]},"previous":{"title":"软件安装","level":"1.3","depth":1,"path":"ruan-jian-an-zhuang.md","ref":"ruan-jian-an-zhuang.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-livereload","tabs2","popup","code","github","splitter","sharing","prism","image-captions-extended","search-plus","-highlight","-search","-lunr"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/GCS-ZHN/socube"},"splitter":{},"image-captions-extended":{},"popup":{},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"tabs2":{},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"search-plus":{},"image-captions":{"caption":"_CAPTION_","variable_name":"_pictures"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[{"backlink":"ruan-jian-an-zhuang.html#fig1.3.1","level":"1.3","list_caption":"Figure: Nvidia cuda下载页面","alt":"Nvidia cuda下载页面","nro":1,"url":"assets/fig7.png","index":1,"caption_template":"_CAPTION_","label":"Nvidia cuda下载页面","attributes":{},"skip":false,"key":"1.3.1"},{"backlink":"ruan-jian-an-zhuang.html#fig1.3.2","level":"1.3","list_caption":"Figure: nvidia-smi","alt":"nvidia-smi","nro":2,"url":"assets/fig8.png","index":2,"caption_template":"_CAPTION_","label":"nvidia-smi","attributes":{},"skip":false,"key":"1.3.2"},{"backlink":"ruan-jian-an-zhuang.html#fig1.3.3","level":"1.3","list_caption":"Figure: Python官网","alt":"Python官网","nro":3,"url":"assets/fig1.jpg","index":3,"caption_template":"_CAPTION_","label":"Python官网","attributes":{},"skip":false,"key":"1.3.3"},{"backlink":"ruan-jian-an-zhuang.html#fig1.3.4","level":"1.3","list_caption":"Figure: Python安装页面","alt":"Python安装页面","nro":4,"url":"assets/fig2.png","index":4,"caption_template":"_CAPTION_","label":"Python安装页面","attributes":{},"skip":false,"key":"1.3.4"},{"backlink":"ruan-jian-an-zhuang.html#fig1.3.5","level":"1.3","list_caption":"Figure: 运行powershell","alt":"运行powershell","nro":5,"url":"assets/fig3.jpg","index":5,"caption_template":"_CAPTION_","label":"运行powershell","attributes":{},"skip":false,"key":"1.3.5"},{"backlink":"ruan-jian-shi-yong.html#fig1.4.1","level":"1.4","list_caption":"Figure: 启动socube","alt":"启动socube","nro":6,"url":"assets/fig5.png","index":1,"caption_template":"_CAPTION_","label":"启动socube","attributes":{},"skip":false,"key":"1.4.1"},{"backlink":"ruan-jian-shi-yong.html#fig1.4.2","level":"1.4","list_caption":"Figure: final\\_result的的CSV文件文件","alt":"final\\_result的的CSV文件文件","nro":7,"url":"assets/fig6.png","index":2,"caption_template":"_CAPTION_","label":"final\\_result的的CSV文件文件","attributes":{},"skip":false,"key":"1.4.2"}]},"title":"SoCube user manual","language":"zh-hans","gitbook":"*"},"file":{"path":"ruan-jian-shi-yong.md","mtime":"2022-07-18T10:17:03.418Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-07-18T10:18:07.609Z"},"basePath":".","book":{"language":"zh-hans"}});
+            gitbook.page.hasChanged({"page":{"title":"参数详解","level":"1.6","depth":1,"next":{"title":"术语","level":"1.7","depth":1,"path":"term.md","ref":"term.md","articles":[]},"previous":{"title":"问题解决","level":"1.5","depth":1,"path":"5-problem-solution.md","ref":"5-problem-solution.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-livereload","tabs2","popup","code","github","splitter","sharing","prism","image-captions-extended","search-plus","-highlight","-search","-lunr"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/GCS-ZHN/socube"},"splitter":{},"image-captions-extended":{},"popup":{},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"tabs2":{},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"search-plus":{},"image-captions":{"caption":"_CAPTION_","variable_name":"_pictures"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[{"backlink":"index.html#fig1.1.1","level":"1.1","list_caption":"Figure: SoCube工作流程示意","alt":"SoCube工作流程示意","nro":1,"url":"assets/workflow.svg","index":1,"caption_template":"_CAPTION_","label":"SoCube工作流程示意","attributes":{},"skip":false,"key":"1.1.1"},{"backlink":"3-install.html#fig1.3.1","level":"1.3","list_caption":"Figure: Nvidia cuda下载页面","alt":"Nvidia cuda下载页面","nro":2,"url":"assets/fig7.png","index":1,"caption_template":"_CAPTION_","label":"Nvidia cuda下载页面","attributes":{},"skip":false,"key":"1.3.1"},{"backlink":"3-install.html#fig1.3.2","level":"1.3","list_caption":"Figure: nvidia-smi","alt":"nvidia-smi","nro":3,"url":"assets/fig8.png","index":2,"caption_template":"_CAPTION_","label":"nvidia-smi","attributes":{},"skip":false,"key":"1.3.2"},{"backlink":"3-install.html#fig1.3.3","level":"1.3","list_caption":"Figure: Python官网","alt":"Python官网","nro":4,"url":"assets/fig1.png","index":3,"caption_template":"_CAPTION_","label":"Python官网","attributes":{},"skip":false,"key":"1.3.3"},{"backlink":"3-install.html#fig1.3.4","level":"1.3","list_caption":"Figure: Python安装页面","alt":"Python安装页面","nro":5,"url":"assets/fig2.png","index":4,"caption_template":"_CAPTION_","label":"Python安装页面","attributes":{},"skip":false,"key":"1.3.4"},{"backlink":"3-install.html#fig1.3.5","level":"1.3","list_caption":"Figure: 运行powershell","alt":"运行powershell","nro":6,"url":"assets/fig3.png","index":5,"caption_template":"_CAPTION_","label":"运行powershell","attributes":{},"skip":false,"key":"1.3.5"},{"backlink":"4-usage.html#fig1.4.1","level":"1.4","list_caption":"Figure: 启动socube","alt":"启动socube","nro":7,"url":"assets/fig5.png","index":1,"caption_template":"_CAPTION_","label":"启动socube","attributes":{},"skip":false,"key":"1.4.1"},{"backlink":"4-usage.html#fig1.4.2","level":"1.4","list_caption":"Figure: final\\_result的的CSV文件文件","alt":"final\\_result的的CSV文件文件","nro":8,"url":"assets/fig6.png","index":2,"caption_template":"_CAPTION_","label":"final\\_result的的CSV文件文件","attributes":{},"skip":false,"key":"1.4.2"},{"backlink":"4-usage.html#fig1.4.3","level":"1.4","list_caption":"Figure: 可用镜像","alt":"可用镜像","nro":9,"url":"assets/fig11.png","index":3,"caption_template":"_CAPTION_","label":"可用镜像","attributes":{},"skip":false,"key":"1.4.3"}]},"title":"SoCube user manual","language":"zh-hans","gitbook":"*"},"file":{"path":"6-parameters.md","mtime":"2022-07-18T13:40:09.547Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-07-18T13:41:04.231Z"},"basePath":".","book":{"language":"zh-hans"}});
         });
     </script>
 </div>
