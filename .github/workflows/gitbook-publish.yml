@@ -15,4 +15,4 @@ jobs:
       with:
         token: ${{ secrets.PERSONAL_TOKEN }}
         source_branch: main
-        publish_repo: GCS-ZHN/socube
+        publish_repo: ${{ github.repository_owner }}/socube
