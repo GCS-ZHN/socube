@@ -3,6 +3,10 @@ on:
   push:
     branches:
       - main  # trigger branch
+
+  watch:
+    types: [started]
+
 jobs:
   build:
     runs-on: ubuntu-latest
