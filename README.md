@@ -8,10 +8,10 @@
 <img src="fig/workflow.svg" alt="SoCube Workflow">
 
 ## Introduction
-SoCube was a end-to-end doublet detection tools with novel feature embedding strategy. [User manual](https://www.gcszhn.top/socube/) is published on this repo's github page.
+SoCube was a end-to-end doublet detection tool with novel feature embedding strategy. [User manual](https://www.gcszhn.top/socube/) is published on this repo's github page.
 
 ## Installment
-You can just install socube by execute pip command
+You can just install socube by execute pip command. 
 ```bash
 pip install socube
 ```
@@ -24,4 +24,4 @@ socube -i data/pbmc-1C-dm.h5ad --gpu-ids 0
 Please visit our [user manual](https://www.gcszhn.top/socube/) for usage detail.
 
 ## Help
-Any problem, you could create an [issue](https://github.com/GCS-ZHN/socube/issues).
+Any problem, you could create an [issue](https://github.com/GCS-ZHN/socube/issues), we will receive a email sented by github and reply it as soon as possible.
