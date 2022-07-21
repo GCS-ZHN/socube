@@ -5,52 +5,52 @@
             "max": 1.0
         },
         "Wilcoxon": {
-            "min": 0.986,
-            "max": 1
+            "min": 0.95,
+            "max": 1.0
         },
         "TSCAN": {
-            "min": 0.874,
-            "max": 0.9541985
+            "min": 0.8,
+            "max": 1.0
         },
         "Slingshot": {
-            "min": 0.734,
-            "max": 0.8496503
+            "min": 0.75,
+            "max": 0.85
         }
     },
     "recall": {
         "MAST": {
-            "min": 0.6358792,
-            "max": 0.695
+            "min": 0.65,
+            "max": 0.7
         },
         "Wilcoxon": {
-            "min": 0.6358792,
-            "max": 0.6936057
+            "min": 0.65,
+            "max": 0.7
         },
         "TSCAN": {
             "min": 0.5,
-            "max": 1
+            "max": 1.0
         },
         "Slingshot": {
-            "min": 0.776,
+            "min": 0.9,
             "max": 1.0
         }
     },
     "TNR": {
         "MAST": {
-            "min": 0.972694,
-            "max": 0.9808067
+            "min": 0.95,
+            "max": 1.0
         },
         "Wilcoxon": {
-            "min": 0.9772778,
-            "max": 0.9808655
+            "min": 0.95,
+            "max": 1.0
         },
         "TSCAN": {
-            "min": 0.87,
-            "max": 0.976
+            "min": 0.95,
+            "max": 1.0
         },
         "Slingshot": {
-            "min": 0.76,
-            "max": 0.914
+            "min": 0.85,
+            "max": 0.95
         }
     }
 }
