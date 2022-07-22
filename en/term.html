@@ -1,10 +1,10 @@
 
 <!DOCTYPE HTML>
-<html lang="zh-hans" >
+<html lang="en" >
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>环境依赖 · SoCube user manual</title>
+        <title>Terminology · SoCube user manual</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -69,10 +69,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="3-install.html" />
+    <link rel="next" href="reference.html" />
     
     
-    <link rel="prev" href="./" />
+    <link rel="prev" href="6-parameters.html" />
     
 
     </head>
@@ -83,7 +83,7 @@
         
             
 <div id="book-search-input" role="search">
-    <input type="text" placeholder="输入并搜索" />
+    <input type="text" placeholder="Type to search" />
 </div>
 
             
@@ -106,7 +106,7 @@
                 <a href="./">
             
                     
-                    引言
+                    Introduction
             
                 </a>
             
@@ -114,12 +114,12 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.2" data-path="2-requirement.html">
+        <li class="chapter " data-level="1.2" data-path="2-requirement.html">
             
                 <a href="2-requirement.html">
             
                     
-                    环境依赖
+                    Requirement
             
                 </a>
             
@@ -132,7 +132,7 @@
                 <a href="3-install.html">
             
                     
-                    软件安装
+                    Installation
             
                 </a>
             
@@ -145,7 +145,7 @@
                 <a href="4-usage.html">
             
                     
-                    软件使用
+                    Usage
             
                 </a>
             
@@ -158,7 +158,7 @@
                 <a href="5-problem-solution.html">
             
                     
-                    问题解决
+                    Problem Solution
             
                 </a>
             
@@ -171,7 +171,7 @@
                 <a href="6-parameters.html">
             
                     
-                    参数详解
+                    Parameters
             
                 </a>
             
@@ -179,12 +179,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7" data-path="term.html">
+        <li class="chapter active" data-level="1.7" data-path="term.html">
             
                 <a href="term.html">
             
                     
-                    术语
+                    Terminology
             
                 </a>
             
@@ -197,7 +197,7 @@
                 <a href="reference.html">
             
                     
-                    参考资料
+                    Reference
             
                 </a>
             
@@ -212,7 +212,7 @@
 
     <li>
         <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-            本书使用 GitBook 发布
+            Published with GitBook
         </a>
     </li>
 </ul>
@@ -235,7 +235,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >环境依赖</a>
+        <a href="." >Terminology</a>
     </h1>
 </div>
 
@@ -250,21 +250,53 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="&#x73AF;&#x5883;&#x4F9D;&#x8D56;">&#x73AF;&#x5883;&#x4F9D;&#x8D56;</h1>
-<h3 id="21-&#x786C;&#x4EF6;&#x73AF;&#x5883;">2.1 &#x786C;&#x4EF6;&#x73AF;&#x5883;</h3>
-<p>SoCube&#x7684;&#x786C;&#x4EF6;&#x5F00;&#x53D1;&#x73AF;&#x5883;&#x7684;CPU&#x578B;&#x53F7;&#x4E3A;&#x5341;&#x4E8C;&#x4EE3;Gen Intel I7-12700F&#xFF0C;GPU&#x578B;&#x53F7;&#x4E3A;NVIDIA GeForce RTX 3060&#x3002;SoCube&#x7406;&#x8BBA;&#x4E0A;&#x80FD;&#x591F;&#x9002;&#x7528;&#x4E8E;&#x4EFB;&#x4F55;&#x53EF;&#x4EE5;&#x8FD0;&#x884C;Python&#x8BED;&#x8A00;&#x548C;&#x6DF1;&#x5EA6;&#x5B66;&#x4E60;&#x6846;&#x67B6;PyTorch&#x7684;&#x8BBE;&#x5907;&#xFF0C;&#x63A8;&#x8350;&#x786C;&#x4EF6;&#x8FD0;&#x884C;&#x73AF;&#x5883;&#x5982;&#x4E0B;&#xFF1A;</p>
-<ul>
-<li>RAM&#x5BB9;&#x91CF;&#x4E0D;&#x5C0F;&#x4E8E;8GB</li>
-<li>CPU&#x6838;&#x5FC3;&#x6570;&#x4E0D;&#x5C0F;&#x4E8E;6&#x6838;</li>
-<li>&#x652F;&#x6301;CUDA&#x52A0;&#x901F;&#x7684;NVIDIA&#x72EC;&#x7ACB;&#x663E;&#x5361;&#xFF0C;&#x663E;&#x5B58;&#x4E0D;&#x5C0F;&#x4E8E;4GB</li>
-</ul>
-<h3 id="22-&#x8F6F;&#x4EF6;&#x73AF;&#x5883;">2.2 &#x8F6F;&#x4EF6;&#x73AF;&#x5883;</h3>
-<p>SoCube&#x4F7F;&#x7528;Python&#x8BED;&#x8A00;v3.8&#x7F16;&#x5199;&#xFF0C;&#x4F7F;&#x7528;Visual Studio Code v1.68.1&#x4F5C;&#x4E3A;&#x4EE3;&#x7801;&#x7F16;&#x5199;&#x5DE5;&#x5177;&#x3002;&#x5F00;&#x53D1;&#x65F6;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x662F;Windows 11&#x3002;SoCube&#x652F;&#x6301;&#x5728;&#x4EFB;&#x4F55;&#x53EF;&#x4EE5;&#x8FD0;&#x884C;Python&#x8BED;&#x8A00;&#x548C;&#x6DF1;&#x5EA6;&#x5B66;&#x4E60;&#x6846;&#x67B6;PyTorch&#x7684;&#x8F6F;&#x4EF6;&#x73AF;&#x5883;&#x4E2D;&#x4F7F;&#x7528;&#xFF0C;&#x63A8;&#x8350;&#x8F6F;&#x4EF6;&#x8FD0;&#x884C;&#x73AF;&#x5883;&#x5982;&#x4E0B;&#xFF1A;</p>
-<ul>
-<li>&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#xFF1A;Windows 10/11&#xFF0C;Linux CentOS 7/8, Mac OS</li>
-<li>Python&#x8BED;&#x8A00;v3.7&#x53CA;&#x4EE5;&#x4E0A;</li>
-<li>PyTorch v1.8.1&#x53CA;&#x4EE5;&#x4E0A;&#x7684;GPU&#x7248;&#x672C;</li>
-</ul>
+                                <h1 id="terminology">Terminology</h1>
+<table>
+<thead>
+<tr>
+<th>Terminology</th>
+<th>Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CPU</td>
+<td>Computer terminology. Central process unit, which is often referred to as the core part of the computer chip. It is responsible for the scheduling and operation of the entire computer.</td>
+</tr>
+<tr>
+<td>GPU</td>
+<td>Computer terminology. Graphics process unit, which is often referred to as the core part of a graphics card. It is responsible for the conversion of digital signals to image analog signals, while modern GPUs can be used for computational acceleration of deep learning models for artificial intelligence.</td>
+</tr>
+<tr>
+<td>RAM</td>
+<td>Computer terminology. Random access memory, which is often referred to as a kind of memory. It can be accessed efficiently, but cannot save data after a power failure.</td>
+</tr>
+<tr>
+<td>pip</td>
+<td>Computer terminology. A build-in package manager for the Python, used to install SoCube V1.0.</td>
+</tr>
+<tr>
+<td>docker</td>
+<td>Computer terminology. A technology that isolates application software and its dependent software environment from the physical machine.</td>
+</tr>
+<tr>
+<td>SMTP</td>
+<td>Computer terminology. Simple mail transfer protocol, a mail service by which mail providers allow operations from third-party mail clients by supporting the protocol.</td>
+</tr>
+<tr>
+<td>scRNA-seq</td>
+<td>Bioinformatics terminology. Single-cell RNA sequencing. which is used to detect the expression of genes in a single cell.</td>
+</tr>
+<tr>
+<td>CNN</td>
+<td>Artificial intelligence terminology. Convolutional neural network, one of the most common types of artificial intelligence models for image-like data. SoCube uses CNNs to build its models.</td>
+</tr>
+<tr>
+<td>WSL</td>
+<td>Computer terminology. Windows subsystem linux, the linux subsystem developed by Microsoft, similar to the virtual machines provided by third parties such as VMare.</td>
+</tr>
+</tbody>
+</table>
 
 <script>console.log("plugin-popup....");document.onclick = function(e){ e.target.tagName === "IMG" && window.open(e.target.src,e.target.src)}</script><style>img{cursor:pointer}</style>
                                 
@@ -293,12 +325,12 @@
 
             
                 
-                <a href="./" class="navigation navigation-prev " aria-label="Previous page: 引言">
+                <a href="6-parameters.html" class="navigation navigation-prev " aria-label="Previous page: Parameters">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="3-install.html" class="navigation navigation-next " aria-label="Next page: 软件安装">
+                <a href="reference.html" class="navigation navigation-next " aria-label="Next page: Reference">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -309,7 +341,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"环境依赖","level":"1.2","depth":1,"next":{"title":"软件安装","level":"1.3","depth":1,"path":"3-install.md","ref":"3-install.md","articles":[]},"previous":{"title":"引言","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-livereload","tabs2","popup","code","github","splitter","sharing","prism","image-captions-extended","search-plus","-highlight","-search","-lunr"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/GCS-ZHN/socube"},"splitter":{},"image-captions-extended":{},"popup":{},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"tabs2":{},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"search-plus":{},"image-captions":{"caption":"_CAPTION_","variable_name":"_pictures"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[{"backlink":"index.html#fig1.1.1","level":"1.1","list_caption":"Figure: SoCube工作流程示意","alt":"SoCube工作流程示意","nro":1,"url":"assets/workflow.svg","index":1,"caption_template":"_CAPTION_","label":"SoCube工作流程示意","attributes":{},"skip":false,"key":"1.1.1"},{"backlink":"3-install.html#fig1.3.1","level":"1.3","list_caption":"Figure: Nvidia cuda下载页面","alt":"Nvidia cuda下载页面","nro":2,"url":"assets/fig7.png","index":1,"caption_template":"_CAPTION_","label":"Nvidia cuda下载页面","attributes":{},"skip":false,"key":"1.3.1"},{"backlink":"3-install.html#fig1.3.2","level":"1.3","list_caption":"Figure: nvidia-smi","alt":"nvidia-smi","nro":3,"url":"assets/fig8.png","index":2,"caption_template":"_CAPTION_","label":"nvidia-smi","attributes":{},"skip":false,"key":"1.3.2"},{"backlink":"3-install.html#fig1.3.3","level":"1.3","list_caption":"Figure: Python官网","alt":"Python官网","nro":4,"url":"assets/fig1.png","index":3,"caption_template":"_CAPTION_","label":"Python官网","attributes":{},"skip":false,"key":"1.3.3"},{"backlink":"3-install.html#fig1.3.4","level":"1.3","list_caption":"Figure: Python安装页面","alt":"Python安装页面","nro":5,"url":"assets/fig2.png","index":4,"caption_template":"_CAPTION_","label":"Python安装页面","attributes":{},"skip":false,"key":"1.3.4"},{"backlink":"3-install.html#fig1.3.5","level":"1.3","list_caption":"Figure: 运行powershell","alt":"运行powershell","nro":6,"url":"assets/fig3.png","index":5,"caption_template":"_CAPTION_","label":"运行powershell","attributes":{},"skip":false,"key":"1.3.5"},{"backlink":"4-usage.html#fig1.4.1","level":"1.4","list_caption":"Figure: 启动socube","alt":"启动socube","nro":7,"url":"assets/fig5.png","index":1,"caption_template":"_CAPTION_","label":"启动socube","attributes":{},"skip":false,"key":"1.4.1"},{"backlink":"4-usage.html#fig1.4.2","level":"1.4","list_caption":"Figure: final\\_result的的CSV文件文件","alt":"final\\_result的的CSV文件文件","nro":8,"url":"assets/fig6.png","index":2,"caption_template":"_CAPTION_","label":"final\\_result的的CSV文件文件","attributes":{},"skip":false,"key":"1.4.2"},{"backlink":"4-usage.html#fig1.4.3","level":"1.4","list_caption":"Figure: 可用镜像","alt":"可用镜像","nro":9,"url":"assets/fig11.png","index":3,"caption_template":"_CAPTION_","label":"可用镜像","attributes":{},"skip":false,"key":"1.4.3"}]},"title":"SoCube user manual","language":"zh-hans","gitbook":"*"},"file":{"path":"2-requirement.md","mtime":"2022-07-22T04:56:29.938Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-07-22T04:57:46.512Z"},"basePath":".","book":{"language":"zh-hans"}});
+            gitbook.page.hasChanged({"page":{"title":"Terminology","level":"1.7","depth":1,"next":{"title":"Reference","level":"1.8","depth":1,"path":"reference.md","ref":"reference.md","articles":[]},"previous":{"title":"Parameters","level":"1.6","depth":1,"path":"6-parameters.md","ref":"6-parameters.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-livereload","tabs2","popup","code","github","splitter","sharing","prism","image-captions-extended","search-plus","-highlight","-search","-lunr"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/GCS-ZHN/socube"},"splitter":{},"image-captions-extended":{},"popup":{},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"tabs2":{},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"search-plus":{},"image-captions":{"caption":"_CAPTION_","variable_name":"_pictures"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[{"backlink":"index.html#fig1.1.1","level":"1.1","list_caption":"Figure: SoCube workflow","alt":"SoCube workflow","nro":1,"url":"assets/workflow.svg","index":1,"caption_template":"_CAPTION_","label":"SoCube workflow","attributes":{},"skip":false,"key":"1.1.1"},{"backlink":"3-install.html#fig1.3.1","level":"1.3","list_caption":"Figure: Nvidia cuda download page","alt":"Nvidia cuda download page","nro":2,"url":"assets/fig7.png","index":1,"caption_template":"_CAPTION_","label":"Nvidia cuda download page","attributes":{},"skip":false,"key":"1.3.1"},{"backlink":"3-install.html#fig1.3.2","level":"1.3","list_caption":"Figure: nvidia-smi","alt":"nvidia-smi","nro":3,"url":"assets/fig8.png","index":2,"caption_template":"_CAPTION_","label":"nvidia-smi","attributes":{},"skip":false,"key":"1.3.2"},{"backlink":"3-install.html#fig1.3.3","level":"1.3","list_caption":"Figure: official Python website","alt":"official Python website","nro":4,"url":"assets/fig1.png","index":3,"caption_template":"_CAPTION_","label":"official Python website","attributes":{},"skip":false,"key":"1.3.3"},{"backlink":"3-install.html#fig1.3.4","level":"1.3","list_caption":"Figure: Python installation page","alt":"Python installation page","nro":5,"url":"assets/fig2.png","index":4,"caption_template":"_CAPTION_","label":"Python installation page","attributes":{},"skip":false,"key":"1.3.4"},{"backlink":"3-install.html#fig1.3.5","level":"1.3","list_caption":"Figure: Run powershell","alt":"Run powershell","nro":6,"url":"assets/fig3.png","index":5,"caption_template":"_CAPTION_","label":"Run powershell","attributes":{},"skip":false,"key":"1.3.5"},{"backlink":"4-usage.html#fig1.4.1","level":"1.4","list_caption":"Figure: Start-up socube","alt":"Start-up socube","nro":7,"url":"assets/fig5.png","index":1,"caption_template":"_CAPTION_","label":"Start-up socube","attributes":{},"skip":false,"key":"1.4.1"},{"backlink":"4-usage.html#fig1.4.2","level":"1.4","list_caption":"Figure: CSV file of final\\_result","alt":"CSV file of final\\_result","nro":8,"url":"assets/fig6.png","index":2,"caption_template":"_CAPTION_","label":"CSV file of final\\_result","attributes":{},"skip":false,"key":"1.4.2"},{"backlink":"4-usage.html#fig1.4.3","level":"1.4","list_caption":"Figure: Available image","alt":"Available image","nro":9,"url":"assets/fig11.png","index":3,"caption_template":"_CAPTION_","label":"Available image","attributes":{},"skip":false,"key":"1.4.3"},{"backlink":"4-usage.html#fig1.4.4","level":"1.4","list_caption":"Figure: colab","alt":"colab","nro":10,"url":"assets/fig10.png","index":4,"caption_template":"_CAPTION_","label":"colab","attributes":{},"skip":false,"key":"1.4.4"}]},"title":"SoCube user manual","language":"en","gitbook":"*"},"file":{"path":"term.md","mtime":"2022-07-22T04:56:29.938Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-07-22T04:57:46.512Z"},"basePath":".","book":{"language":"en"}});
         });
     </script>
 </div>
