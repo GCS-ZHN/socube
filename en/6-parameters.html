@@ -253,89 +253,89 @@
                                 <h1 id="parameters">Parameters</h1>
 <p>SoCube&apos;s parameters help can be obtained by executing <code>socube --help</code> in the terminal, which is explained here. socube&apos;s help file output will automatically select Chinese or English depending on the user&apos;s system language and locale. If necessary, the user can change the system language setting to switch, for example, setting the <code>LC_ALL</code> environment variable to <code>en_US</code> under linux.</p>
 <p><img src="assets/fig9.png" alt=""></p>
-<ol>
+<ul>
 <li>--input</li>
-</ol>
-<p>The abbreviation is &quot;-i&quot;. As mentioned before, this parameter is used to specify the data input file, which can receive two data formats, and will not be repeated here.</p>
-<ol>
+</ul>
+<p>The abbreviation is &quot;-i&quot;. As mentioned before, this parameter is used to specify the data input file, which can receive two data formats, and it will not be repeated here.</p>
+<ul>
 <li>--output</li>
-</ol>
-<p>The abbreviation is &quot;-o&quot;. This parameter is used to customize the output path of the result, which will be created automatically if the path does not exist. As mentioned before, by default, the result output will be in the same directory as the input file, and the user can use this parameter to customize it. Example: --output D:/data/</p>
-<ol>
+</ul>
+<p>The abbreviation is &quot;-o&quot;. This parameter is used to customize the output path of the result, which will be created automatically if the path does not exist. As mentioned before, by default, the result output will be in the same directory as the input file, and the user can use this parameter to customize it. Example: <code>--output D:/data/</code>.</p>
+<ul>
 <li>--gpu-ids</li>
-</ol>
-<p>As mentioned before, this parameter is used to specify the serial number of the GPU devices involved in the compute acceleration. It can be a single serial number or multiple serial numbers separated by commas, note that the comma is an English comma with no spaces, the default is not set, use CPU. Example: --gpu-ids 0,1,2.</p>
-<ol>
+</ul>
+<p>As mentioned before, this parameter is used to specify the serial number of the GPU devices involved in the compute acceleration. It can be a single serial number or multiple serial numbers separated by commas, note that the comma is an English comma with no spaces, the default is not set, use CPU. Example: <code>--gpu-ids 0,1,2</code>.</p>
+<ul>
 <li>--seed</li>
-</ol>
-<p>This parameter is used to specify the random number seed for the random process in the software calculation, the default is not set. Example: --seed 4067.</p>
-<ol>
+</ul>
+<p>This parameter is used to specify the random number seed for the random process in the software calculation, the default is not set. Example: <code>--seed 4067</code>.</p>
+<ul>
 <li>--k</li>
-</ol>
-<p>This parameter is used to specify the k value for model k-fold cross-training, the default is 5. Example: -- k 4.</p>
-<ol>
+</ul>
+<p>This parameter is used to specify the k value for model k-fold cross-training, the default is 5. Example: <code>--k 4</code>.</p>
+<ul>
 <li>--adj-factor</li>
-</ol>
-<p>This parameter is the adjustment factor for the doublet expression level. By default, the expression level of the doublet is assumed to be twice that of the monomer, but the actual situation fluctuates and the expression level can be changed by adjusting this factor. The default is 1.0. Example: --adj-factor 0.8.</p>
-<ol>
+</ul>
+<p>This parameter is the adjustment factor for the doublet expression level. By default, the expression level of the doublet is assumed to be twice that of the singlet, but there are fluctuations in the actual situation and the expression level can be changed by adjusting this factor. The default is 1.0. Example: <code>--adj-factor 0.8</code>.</p>
+<ul>
 <li>--dim</li>
-</ol>
-<p>This parameter is used to specify the number of channels for constructing features, and also the target dimension for gene feature downscaling, the default is 10. Example: --dim 5.</p>
-<ol>
+</ul>
+<p>This parameter is used to specify the number of channels for constructing features, and also the target dimension for gene feature reduction, the default is 10. Example: <code>--dim 5</code>.</p>
+<ul>
 <li>--cube-id</li>
-</ol>
-<p>This parameter is used to reuse the previously generated features. All features will be saved in the embedding subdirectory. This parameter is the ID of the specific feature in that subdirectory, which is a &quot;XXXXXXX-XXXXXX-XXX&quot; style string. Example: --cube-id 20220704-120122-854.</p>
-<ol>
+</ul>
+<p>This parameter is used to reuse the previously generated features. All features will be saved in the &quot;embedding&quot; subdirectory. This parameter is the ID of the specific feature in that subdirectory, which is a &quot;XXXXXXX-XXXXXX-XXX&quot; style string. Example: <code>--cube-id 20220704-120122-854</code>.</p>
+<ul>
 <li>--learning-rate</li>
-</ol>
-<p>The abbreviation is &quot;-lr&quot;. This parameter is the training learning rate of an artificial intelligence deep neural network. This parameter can have a significant impact on the detection results. The default value is 1e-3, and can be customized if the user feels the need to do so. Example: --learning-rate 1e-4.</p>
-<ol>
+</ul>
+<p>The abbreviation is &quot;-lr&quot;. This parameter is the training learning rate of an artificial intelligence deep neural network. This parameter can have a significant impact on the detection results. The default value is 1e-3, and can be customized if necessary. Example: <code>--learning-rate 1e-4</code>.</p>
+<ul>
 <li>--epochs</li>
-</ol>
-<p>The abbreviation is &quot;-e&quot;. This parameter refers to the maximum number of rounds of neural network training. However, in general, training will be completed before the default maximum number of rounds of 100 is reached. Example: --epochs 50.</p>
-<ol>
+</ul>
+<p>The abbreviation is &quot;-e&quot;. This parameter refers to the maximum number of rounds of neural network training. However, in general, training will be completed before the default maximum number of rounds of 100 is reached. Example: <code>--epochs 50</code>.</p>
+<ul>
 <li>--train-batch-size</li>
-</ol>
-<p>This parameter is used to specify the batch data set size for neural network training, the default is 64. larger batch data set size tends to have better training effect, but occupies more CPU memory or GPU video memory. Users can adjust it according to the actual situation of their devices. Example: --train-batch-size 32.</p>
-<ol>
+</ul>
+<p>This parameter is used to specify the batch dataset size for neural network training, the default is 64. larger batch data set size tends to have better training effect, but occupies more CPU memory or GPU video memory. Users can adjust it according to the actual situation of their devices. Example: <code>--train-batch-size 32</code>.</p>
+<ul>
 <li>--valid-batch-size</li>
-</ol>
-<p>Similar to the previous, this parameter is used to specify the batch dataset size for neural network validation and defaults to 512. Since the validation process consumes significantly less memory than the training process, the default value is larger. Example: --valid-batch-size 256.</p>
-<ol>
+</ul>
+<p>Similar to the previous, this parameter is used to specify the batch dataset size for neural network validation and defaults to 512. Since the validation process consumes significantly less memory than the training process, the default value is larger. Example: <code>--valid-batch-size 256</code>.</p>
+<ul>
 <li>--infer-batch-size</li>
-</ol>
-<p>Similar to the previous, this parameter is used to specify the batch dataset size for neural network prediction, default is 400. example: --infer-batch-size 256.</p>
-<ol>
+</ul>
+<p>Similar to the previous, this parameter is used to specify the batch dataset size for neural network prediction, default is 400. example: <code>--infer-batch-size 256</code>.</p>
+<ul>
 <li>--threshold</li>
-</ol>
-<p>The abbreviation is &quot;-t&quot;. This parameter is used to specify the probability threshold for classifying doublets and singlets, the default is 0.5. As explained in the previous CSV results file, cell samples larger than the threshold are determined to be doublets. Example: -t 0.5.</p>
-<ol>
+</ul>
+<p>The abbreviation is &quot;-t&quot;. This parameter is used to specify the probability threshold for classifying doublets and singlets, the default is 0.5. As explained in the previous CSV results file, cell samples larger than the threshold are determined to be doublets. Example: <code>-t 0.5</code>.</p>
+<ul>
 <li>--enable-validation</li>
-</ol>
+</ul>
 <p>The abbreviation is &quot;-ev&quot;. This parameter is a position parameter with no subsequent values. Use it to enable result validation, which is used only to reproduce the evaluation metrics of the results. It requires that the data input format is H5AD and that the &quot;obs&quot; property of the AnnData object has a &quot;type&quot; column with the content &quot;doublet &quot; or &quot;singlet&quot;, which indicates the real label of the dataset.</p>
-<ol>
+<ul>
 <li>--enable-multiprocess</li>
-</ol>
-<p>The abbreviation is &quot;-mp&quot;. This parameter is a position parameter with no subsequent values. Use it to enable multi-process training. In this case, SoCube creates k sub-processes to train k sub-models in parallel (the k value is specified by the -k parameter). Multi-process training can improve the detection speed, but it is a space-for-time operation, which increases memory and video memory overhead, so users need to decide whether to enable multi-process according to their dataset size and memory size. Of course, users can adjust the previous batch parameter to reduce memory usage.</p>
-<ol>
+</ul>
+<p>The abbreviation is &quot;-mp&quot;. This parameter is a position parameter with no subsequent values. Use it to enable multi-process training. In this case, SoCube creates k sub-processes to train k sub-models in parallel (the k value is specified by the --k parameter). Multi-process training can improve the detection speed, but it is a space-for-time operation, which increases memory and video memory overhead, so users need to decide whether to enable multi-process according to their dataset size and memory size. Of course, users can adjust the previous batch parameter to reduce memory usage.</p>
+<ul>
 <li>--mail</li>
-</ol>
+</ul>
 <p>This parameter specifies the email address to be used for result notification, which can be used by any mail provider that supports SMTP protocol, such as QQmail, Gmail, etc. It needs to be used in conjunction with several subsequent mailbox parameters.</p>
-<ol>
+<ul>
 <li>--mail-server</li>
-</ol>
-<p>This parameter specifies the SMTP server domain name of the mail provider. Please consult the email provider you are using for details. Example: --mail-server smtp.gmail.com.</p>
-<ol>
+</ul>
+<p>This parameter specifies the SMTP server domain name of the mail provider. Please consult the email provider you are using for details. Example: <code>--mail-server smtp.gmail.com</code>.</p>
+<ul>
 <li>--mail-port</li>
-</ol>
-<p>This parameter specifies the SMTP service port of the mail provider. Please consult the email provider you are using for details. Example: --mail-port 994.</p>
-<ol>
+</ul>
+<p>This parameter specifies the SMTP service port of the mail provider. Please consult the email provider you are using for details. Example: <code>--mail-port 994</code>.</p>
+<ul>
 <li>--mail-passwd</li>
-</ol>
+</ul>
 <p>This parameter specifies the password of the email. Generally it is the login password of web email, unless otherwise agreed by the email provider, please consult the email provider you are using for details.</p>
-<ol>
+<ul>
 <li>--enable-ssl</li>
-</ol>
+</ul>
 <p>Enabling this parameter means that the mail service uses SSL encryption.</p>
 
 <script>console.log("plugin-popup....");document.onclick = function(e){ e.target.tagName === "IMG" && window.open(e.target.src,e.target.src)}</script><style>img{cursor:pointer}</style>
@@ -381,7 +381,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Parameters","level":"1.6","depth":1,"next":{"title":"Terminology","level":"1.7","depth":1,"path":"term.md","ref":"term.md","articles":[]},"previous":{"title":"Problem Solution","level":"1.5","depth":1,"path":"5-problem-solution.md","ref":"5-problem-solution.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-livereload","tabs2","popup","code","github","splitter","sharing","prism","image-captions-extended","search-plus","-highlight","-search","-lunr"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/GCS-ZHN/socube"},"splitter":{},"image-captions-extended":{},"popup":{},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"tabs2":{},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"search-plus":{},"image-captions":{"caption":"_CAPTION_","variable_name":"_pictures"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[{"backlink":"index.html#fig1.1.1","level":"1.1","list_caption":"Figure: SoCube workflow","alt":"SoCube workflow","nro":1,"url":"assets/workflow.svg","index":1,"caption_template":"_CAPTION_","label":"SoCube workflow","attributes":{},"skip":false,"key":"1.1.1"},{"backlink":"3-install.html#fig1.3.1","level":"1.3","list_caption":"Figure: Nvidia cuda download page","alt":"Nvidia cuda download page","nro":2,"url":"assets/fig7.png","index":1,"caption_template":"_CAPTION_","label":"Nvidia cuda download page","attributes":{},"skip":false,"key":"1.3.1"},{"backlink":"3-install.html#fig1.3.2","level":"1.3","list_caption":"Figure: nvidia-smi","alt":"nvidia-smi","nro":3,"url":"assets/fig8.png","index":2,"caption_template":"_CAPTION_","label":"nvidia-smi","attributes":{},"skip":false,"key":"1.3.2"},{"backlink":"3-install.html#fig1.3.3","level":"1.3","list_caption":"Figure: official Python website","alt":"official Python website","nro":4,"url":"assets/fig1.png","index":3,"caption_template":"_CAPTION_","label":"official Python website","attributes":{},"skip":false,"key":"1.3.3"},{"backlink":"3-install.html#fig1.3.4","level":"1.3","list_caption":"Figure: Python installation page","alt":"Python installation page","nro":5,"url":"assets/fig2.png","index":4,"caption_template":"_CAPTION_","label":"Python installation page","attributes":{},"skip":false,"key":"1.3.4"},{"backlink":"3-install.html#fig1.3.5","level":"1.3","list_caption":"Figure: Run powershell","alt":"Run powershell","nro":6,"url":"assets/fig3.png","index":5,"caption_template":"_CAPTION_","label":"Run powershell","attributes":{},"skip":false,"key":"1.3.5"},{"backlink":"4-usage.html#fig1.4.1","level":"1.4","list_caption":"Figure: Start-up socube","alt":"Start-up socube","nro":7,"url":"assets/fig5.png","index":1,"caption_template":"_CAPTION_","label":"Start-up socube","attributes":{},"skip":false,"key":"1.4.1"},{"backlink":"4-usage.html#fig1.4.2","level":"1.4","list_caption":"Figure: CSV file of final\\_result","alt":"CSV file of final\\_result","nro":8,"url":"assets/fig6.png","index":2,"caption_template":"_CAPTION_","label":"CSV file of final\\_result","attributes":{},"skip":false,"key":"1.4.2"},{"backlink":"4-usage.html#fig1.4.3","level":"1.4","list_caption":"Figure: Available image","alt":"Available image","nro":9,"url":"assets/fig11.png","index":3,"caption_template":"_CAPTION_","label":"Available image","attributes":{},"skip":false,"key":"1.4.3"},{"backlink":"4-usage.html#fig1.4.4","level":"1.4","list_caption":"Figure: colab","alt":"colab","nro":10,"url":"assets/fig10.png","index":4,"caption_template":"_CAPTION_","label":"colab","attributes":{},"skip":false,"key":"1.4.4"}]},"title":"SoCube user manual","language":"en","gitbook":"*"},"file":{"path":"6-parameters.md","mtime":"2022-07-22T04:56:29.926Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-07-22T04:57:46.512Z"},"basePath":".","book":{"language":"en"}});
+            gitbook.page.hasChanged({"page":{"title":"Parameters","level":"1.6","depth":1,"next":{"title":"Terminology","level":"1.7","depth":1,"path":"term.md","ref":"term.md","articles":[]},"previous":{"title":"Problem Solution","level":"1.5","depth":1,"path":"5-problem-solution.md","ref":"5-problem-solution.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-livereload","tabs2","popup","code","github","splitter","sharing","prism","image-captions-extended","search-plus","-highlight","-search","-lunr"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/GCS-ZHN/socube"},"splitter":{},"image-captions-extended":{},"popup":{},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"tabs2":{},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"search-plus":{},"image-captions":{"caption":"_CAPTION_","variable_name":"_pictures"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[{"backlink":"index.html#fig1.1.1","level":"1.1","list_caption":"Figure: SoCube workflow","alt":"SoCube workflow","nro":1,"url":"assets/workflow.svg","index":1,"caption_template":"_CAPTION_","label":"SoCube workflow","attributes":{},"skip":false,"key":"1.1.1"},{"backlink":"3-install.html#fig1.3.1","level":"1.3","list_caption":"Figure: NVIDIA cuda download page","alt":"NVIDIA cuda download page","nro":2,"url":"assets/fig7.png","index":1,"caption_template":"_CAPTION_","label":"NVIDIA cuda download page","attributes":{},"skip":false,"key":"1.3.1"},{"backlink":"3-install.html#fig1.3.2","level":"1.3","list_caption":"Figure: output of nvidia-smi","alt":"output of nvidia-smi","nro":3,"url":"assets/fig8.png","index":2,"caption_template":"_CAPTION_","label":"output of nvidia-smi","attributes":{},"skip":false,"key":"1.3.2"},{"backlink":"3-install.html#fig1.3.3","level":"1.3","list_caption":"Figure: Python official website","alt":"Python official website","nro":4,"url":"assets/fig1.png","index":3,"caption_template":"_CAPTION_","label":"Python official website","attributes":{},"skip":false,"key":"1.3.3"},{"backlink":"3-install.html#fig1.3.4","level":"1.3","list_caption":"Figure: Python installation page","alt":"Python installation page","nro":5,"url":"assets/fig2.png","index":4,"caption_template":"_CAPTION_","label":"Python installation page","attributes":{},"skip":false,"key":"1.3.4"},{"backlink":"3-install.html#fig1.3.5","level":"1.3","list_caption":"Figure: Run powershell","alt":"Run powershell","nro":6,"url":"assets/fig3.png","index":5,"caption_template":"_CAPTION_","label":"Run powershell","attributes":{},"skip":false,"key":"1.3.5"},{"backlink":"4-usage.html#fig1.4.1","level":"1.4","list_caption":"Figure: Start-up socube","alt":"Start-up socube","nro":7,"url":"assets/fig5.png","index":1,"caption_template":"_CAPTION_","label":"Start-up socube","attributes":{},"skip":false,"key":"1.4.1"},{"backlink":"4-usage.html#fig1.4.2","level":"1.4","list_caption":"Figure: CSV file of final_result","alt":"CSV file of final_result","nro":8,"url":"assets/fig6.png","index":2,"caption_template":"_CAPTION_","label":"CSV file of final_result","attributes":{},"skip":false,"key":"1.4.2"},{"backlink":"4-usage.html#fig1.4.3","level":"1.4","list_caption":"Figure: Available image","alt":"Available image","nro":9,"url":"assets/fig11.png","index":3,"caption_template":"_CAPTION_","label":"Available image","attributes":{},"skip":false,"key":"1.4.3"},{"backlink":"4-usage.html#fig1.4.4","level":"1.4","list_caption":"Figure: colab","alt":"colab","nro":10,"url":"assets/fig10.png","index":4,"caption_template":"_CAPTION_","label":"colab","attributes":{},"skip":false,"key":"1.4.4"}]},"title":"SoCube user manual","language":"en","gitbook":"*"},"file":{"path":"6-parameters.md","mtime":"2022-07-22T09:20:25.016Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-07-22T09:21:23.054Z"},"basePath":".","book":{"language":"en"}});
         });
     </script>
 </div>
