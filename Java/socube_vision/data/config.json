@@ -31,7 +31,7 @@
             "max": 1.0
         },
         "Slingshot": {
-            "min": 0.9,
+            "min": 0.5,
             "max": 1.0
         }
     },
@@ -41,11 +41,11 @@
             "max": 1.0
         },
         "Wilcoxon": {
-            "min": 0.95,
+            "min": 0.85,
             "max": 1.0
         },
         "TSCAN": {
-            "min": 0.95,
+            "min": 0.85,
             "max": 1.0
         },
         "Slingshot": {
