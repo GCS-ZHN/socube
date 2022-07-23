@@ -120,26 +120,3 @@ f <- function() {
 }
 f()
 rm(f)
-################################################################################
-# Solo
-################################################################################
-f <- function() {
-    score <-
-        read.csv(
-            "outputs/solo_result/sim_psudotime_temporally_expressed_genes_2010/softmax_scores.csv",
-            header = FALSE
-        )$V1
-    pred.index <- which(as.numeric(score > 0.5) == 1)
-    counts <- sim.doublet[, -pred.index]
-    dim(counts)
-    types <- sim.type[-pred.index]
-    table(types)
-    DE <- row.names(counts)[501:750]
-    temporalDEbySlingshot(
-        counts = counts,
-        types = types,
-        DE = DE
-    )
-}
-f()
-rm(f)
