@@ -3,7 +3,7 @@
 ![python](https://img.shields.io/badge/python->=3.7-success.svg)
 ![torch](https://img.shields.io/badge/torch->=1.8.1-success.svg)
 [![docker](https://img.shields.io/badge/docker-support-success.svg)](https://hub.docker.com/r/gcszhn/socube)
-[![pypi](https://img.shields.io/badge/pypi-release-blue.svg)](https://pypi.org/project/socube/)
+[![pypi](https://github.com/GCS-ZHN/socube/actions/workflows/pypi.yml/badge.svg)](https://pypi.org/project/socube/)
 [![pmid](https://img.shields.io/badge/PMID-NOT%20available-red.svg)](https://pubmed.ncbi.nlm.nih.gov/)
 <img src="fig/workflow.svg" alt="SoCube Workflow">
 
