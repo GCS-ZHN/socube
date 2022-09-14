@@ -11,7 +11,8 @@
         "k": "The k-fold cross-validation is used in training, and the resulting k models will be ensembled into one model. Default 5.",
         "adj_factor": "The adjustment factor for the doublet expression level. By default it is assumed that the doublet expression level is twice the sinlget, but there are fluctuations in the real situation and the expression level can be changed by adjusting this factor. Default 1.0.",
         "dim": "The target dimension for gene degradation is also the number of channels to train the model. Default 10.",
-        "cube_id": "If you want to reuse the socube embedding features obtained earlier,  just specify the embedding ID, which is a string like \"yyyymmdd-HHMMSS-xxx\", along with the original output path."
+        "cube_id": "If you want to reuse the socube embedding features obtained earlier,  just specify the embedding ID, which is a string like \"yyyymmdd-HHMMSS-xxx\", along with the original output path.",
+        "only_embedding": "This option is provided for users who only want to use socube embedding but do not require doublet detection"
     },
     "model_args": {
         "title": "model training configuration",

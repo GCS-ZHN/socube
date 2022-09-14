@@ -20,7 +20,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-__version__ = "1.0"
+__version__ = "1.1rc1"
 __author__ = "Zhang.H.N"
 __email__ = "zhang.h.n@foxmail.com"
 __url__ = "https://github/GCS-ZHN/socube/"
@@ -80,6 +80,11 @@ def main(*args: str):
                             type=str,
                             default=None,
                             help=help["basic_args"]["cube_id"])
+    basic_args.add_argument("--only-embedding",
+                            action="store_true",
+                            default=False,
+                            help=help["basic_args"]["only_embedding"]
+    )
 
     model_args = parser.add_argument_group(help["model_args"]["title"])
     model_args.add_argument("--learning-rate",
@@ -256,10 +261,13 @@ def main(*args: str):
                              header=None)
 
                 checkData(samples)
-                future: Future = createTrainData(samples,
-                                                 output_path=embedding_path,
-                                                 adj=args.adj_factor,
-                                                 seed=args.seed)
+                if args.only_embedding:
+                    train_data = samples
+                else:
+                    future: Future = createTrainData(samples,
+                                                    output_path=embedding_path,
+                                                    adj=args.adj_factor,
+                                                    seed=args.seed)
 
                 samples = samples.T
                 writeHdf(
@@ -284,24 +292,30 @@ def main(*args: str):
                             seed=args.seed,
                             latent_dim=args.dim,
                             job_id=cube_id)
+            
+            if not args.only_embedding:
+                train_data, train_label = future.result()
 
-            train_data, train_label = future.result()
             log("Post-processing",
                 "Processing data with log, std and feature minmax")
             train_data = minmax(std(np.log(train_data + 1)))
             log("Post-processing", "Single channels data is tranforming")
-
             my_cube.batchTransform(train_data, train_path)
-            writeCsv(train_label,
-                     join(train_path, "TrainLabel.csv"),
-                     header=None)
-            if checkExist(join(embedding_path, "ExperimentLabel.csv"),
-                          raise_error=False):
-                shutil.copyfile(join(embedding_path, "ExperimentLabel.csv"),
-                                join(train_path, "ExperimentLabel.csv"))
+
+            if not args.only_embedding:
+                writeCsv(train_label,
+                        join(train_path, "TrainLabel.csv"),
+                        header=None)
+                if checkExist(join(embedding_path, "ExperimentLabel.csv"),
+                            raise_error=False):
+                    shutil.copyfile(join(embedding_path, "ExperimentLabel.csv"),
+                                    join(train_path, "ExperimentLabel.csv"))
 
         elif args.input is not None:
             log("Config", "input is ignored because cube id is specified")
+
+        if args.only_embedding:
+            return
 
         log("Train", "Data check before training start")
         dim = my_cube._config["latent_dim"]
