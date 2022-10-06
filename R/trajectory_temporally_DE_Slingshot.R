@@ -1,8 +1,8 @@
 # This file was create to do temporally DEG analysis by Slingshot
-source("./R/Methods.R")
+source("public/R/Methods.R")
 sim.data <-
     readRDS(
-        "compares/Doublet-Detection-Benchmark/synthetic_datasets/sim_temporally_DE.rds"
+        "internal_compares/Doublet-Detection-Benchmark/synthetic_datasets/sim_temporally_DE.rds"
     )
 sim.doublet <- sim.data[[1]]
 dim(counts)
@@ -117,6 +117,24 @@ f <- function() {
         types = types,
         DE = DE
     )
+}
+f()
+rm(f)
+# scDblFinder
+library(scDblFinder)
+f <- function() {
+  score <- scDblFinder(sim.doublet)$scDblFinder.score
+  pred.index <- which(as.numeric(score > 0.5) == 1)
+  counts <- sim.doublet[, -pred.index]
+  dim(counts)
+  types <- sim.type[-pred.index]
+  table(types)
+  DE <- row.names(counts)[501:750]
+  temporalDEbySlingshot(
+    counts = counts,
+    types = types,
+    DE = DE
+  )
 }
 f()
 rm(f)

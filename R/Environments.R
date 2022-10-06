@@ -1,4 +1,4 @@
-# This file was created to install all require R packages
+M# This file was created to install all require R packages
 
 dependencies <- list(
     "official" = c(
@@ -18,7 +18,8 @@ dependencies <- list(
         "limma",
         "scran",
         "MAST",
-        "gam"),
+        "gam",
+        "TSCAN"),
     "github" = c(
         "chris-mcginnis-ucsf/DoubletFinder",
         "GCS-ZHN/scWGCNA")

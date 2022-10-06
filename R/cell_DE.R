@@ -1,9 +1,10 @@
 # This file was created to do DEG analysis
-source("R/Methods.R")
+source("public/R/Methods.R")
 library(Matrix)
 library(pbapply)
 library(ggplot2)
 library(scran)
+library(scDblFinder)
 set.seed(2020)
 deg <- function(count, cluster, trueLabel, test = "wilcox") {
     gene <- rownames(count)
@@ -61,4 +62,20 @@ f <- function() {
 }
 f()
 rm(f)
-# The results of Solo and DoubletFinder are from reference papers.
+
+# DE Analyisis for scDblFinder
+f <- function() {
+  score <- scDblFinder(sim.doublet)$scDblFinder.score
+  pred.index <- which(score > sort(score, decreasing = TRUE)[667])
+  length(pred.index)
+  cluster <- sim.cluster[-pred.index]
+  doublet <- sim.doublet[, -pred.index]
+  wilcox <- deg(count = doublet, cluster = cluster, trueLabel = de.truth, test = "wilcox")
+  mast <- deg(count = doublet, cluster = cluster, trueLabel = de.truth, test = "MAST")
+  # bimod <- deg(count = doublet, cluster = cluster, trueLabel = de.truth, test = "bimod")
+  print(wilcox)
+  print(mast)
+  # print(bimod)
+}
+f()
+rm(f)

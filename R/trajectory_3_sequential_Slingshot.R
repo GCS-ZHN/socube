@@ -1,7 +1,7 @@
 # This file was create to do 3 sequential cell trajectory inference
-source("./R/Methods.R")
+source("public/R/Methods.R")
 sim.data <- readRDS(
-    "compares/Doublet-Detection-Benchmark/paper_sim/sim_psudotime_3_sequential.rds"
+    "internal_compares/Doublet-Detection-Benchmark/paper_sim/sim_psudotime_3_sequential.rds"
 )
 sim.doublet <- sim.data[[1]]
 dim(sim.doublet)
@@ -21,7 +21,7 @@ f <- function() {
     pdf("plots/trajectory_control/negative_control_3_sequential_th_0.5.pdf")
     palette(c("red", "grey"))
     plot(pca$PC1, pca$PC2,
-        col = pca$type, pch = 16, asp = 0, main = "negative",
+        col = pca$type, pch = 16, asp = 0, 
         xlab = NA, ylab = NA, xaxt = "n", yaxt = "n", cex.main = 2, cex = 1.3, font.main = 1
     )
     lines(SlingshotDataSet(sim), lwd = 7, type = "lineages", col = "black")
@@ -43,7 +43,7 @@ f <- function() {
     pdf("plots/trajectory_control/positive_control_3_sequential_th_0.5.pdf")
     palette(c("grey", "grey"))
     plot(pca$PC1, pca$PC2,
-        col = pca$type, pch = 16, asp = 0, main = "positive",
+        col = pca$type, pch = 16, asp = 0, 
         xlab = NA, ylab = NA, xaxt = "n", yaxt = "n", cex.main = 2, cex = 1.3, font.main = 1
     )
     lines(SlingshotDataSet(sim), lwd = 7, type = "lineages", col = "black")
@@ -85,7 +85,6 @@ f <- function() {
         col = pca$type,
         pch = 16,
         asp = 0,
-        main = "SoCube",
         xlab = NA,
         ylab = NA,
         xaxt = "n",
@@ -127,7 +126,6 @@ f <- function() {
         col = pca$type,
         pch = 16,
         asp = 0,
-        main = "Solo",
         xlab = NA,
         ylab = NA,
         xaxt = "n",
@@ -165,7 +163,6 @@ f <- function() {
         col = pca$type,
         pch = 16,
         asp = 0,
-        main = "DoubletFinder",
         xlab = NA,
         ylab = NA,
         xaxt = "n",
@@ -173,6 +170,42 @@ f <- function() {
     )
     lines(SlingshotDataSet(sim), lwd = 7, type = "lineages", col = "black")
     dev.off()
+}
+f()
+rm(f)
+
+################################################################################
+# scDblFinder
+################################################################################
+library(scDblFinder)
+f <- function() {
+  score <- scDblFinder(sim.doublet)$scDblFinder.score
+  hist(score)
+  pred.index <- which(as.numeric(score > 0.5) == 1)
+  counts <- sim.doublet[, -pred.index]
+  dim(counts)
+  types <- sim.types[-pred.index]
+  table(types)
+  sim <- trajectoryBySlingshot(counts)
+  pca <- as.data.frame(reducedDims(sim)$PCA)
+  pca$type <- as.numeric(types)
+  pca$type <- ifelse(pca$type == 0, "singlet", "doublet")
+  pca$type <- as.factor(pca$type)
+  pdf("internal_plots/scDblFinder_result/trajectory_3_sequential_th_0.5.pdf")
+  palette(c("red", "grey"))
+  plot(
+    pca$PC1,
+    pca$PC2,
+    col = pca$type,
+    pch = 16,
+    asp = 0,
+    xlab = NA,
+    ylab = NA,
+    xaxt = "n",
+    yaxt = "n", cex.main = 2, cex = 1.3, font.main = 1
+  )
+  lines(SlingshotDataSet(sim), lwd = 7, type = "lineages", col = "black")
+  dev.off()
 }
 f()
 rm(f)

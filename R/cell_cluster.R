@@ -1,9 +1,9 @@
 # This file was created to cell clustering
 library(pbapply)
-source("./R/Methods.R")
+source("public/R/Methods.R")
 set.seed(2020)
 
-data.list.cluster <- readRDS("datasets/scPred_pbmc_2/scPred_pbmc_2_silco.rds")
+data.list.cluster <- readRDS("internal_datasets/scPred_pbmc_1/scPred_pbmc_1_silco.rds")
 count.list.cluster <- data.list.cluster$counts
 label.list.cluster <- lapply(data.list.cluster$labels, function(label) {
     ifelse(label == "doublet", 1, 0)
@@ -52,6 +52,20 @@ data <- data.frame(
 
 write.csv(data, paste(path, "clean_cluster.csv", sep = "/"))
 saveRDS(cluster, paste(path, "clean_cluster.rds", sep = "/"))
+
+# dir data for scPred_pbmc_1 cluster 9  2： 8 | 9 11
+count <- count.list.cluster
+label <- rep(0, dim(count)[[2]])
+path <- "internal_outputs/scPred_pbmc_1"
+cluster <- runCluster(0.5, label, count, resolution = 0.5)
+
+data <- data.frame(
+  row.names = cluster@assays[["RNA"]]@counts@Dimnames[[2]],
+  cluster = as.numeric(cluster@meta.data[["seurat_clusters"]])
+)
+
+write.csv(data, paste(path, "dir_cluster.csv", sep = "/"))
+saveRDS(cluster, paste(path, "dir_cluster.rds", sep = "/"))
 
 # SoCube
 count <- count.list.cluster
@@ -136,5 +150,39 @@ data <- data.frame(
     cluster = as.numeric(cluster@meta.data[["seurat_clusters"]])
 )
 
+write.csv(data, paste(path, "cluster.csv", sep = "/"))
+saveRDS(cluster, paste(path, "cluster.rds", sep = "/"))
+
+
+# scDblFinder
+library(scDblFinder)
+count <- count.list.cluster
+label <- label.list.cluster
+
+path <- "internal_outputs/scDblFinder_result/scPred_pbmc_1"
+if (!dir.exists(path)) {
+  dir.create(path)
+}
+score <- scDblFinder(count)$scDblFinder.score
+# score <- read.csv(
+#   paste(path, "sorce.csv", sep = "/"), 
+#   header = TRUE)$x
+cluster <- pbsapply(
+  seq(from = 0.1, by = 0.1, to = 0.9), 
+  function(x) {
+    return(nlevels(runCluster(
+      x, 
+      score, 
+      count, 
+      resolution = 0.5)@meta.data[["seurat_clusters"]]))
+  }
+)
+cluster <- runCluster(0.5, score, count, resolution = 0.5)
+
+data <- data.frame(
+  row.names = cluster@assays[["RNA"]]@counts@Dimnames[[2]],
+  cluster = as.numeric(cluster@meta.data[["seurat_clusters"]])
+)
+write.csv(score, paste(path, "sorce.csv", sep = "/"))
 write.csv(data, paste(path, "cluster.csv", sep = "/"))
 saveRDS(cluster, paste(path, "cluster.rds", sep = "/"))

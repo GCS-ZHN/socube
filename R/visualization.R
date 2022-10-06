@@ -143,3 +143,84 @@ Seurat::DimPlot(
 ))
 dev.off()
 rm(list = ls()[sapply(ls(), function(x) str_starts(x, "df_"))])
+
+# scDblFinder
+df_path <- "internal_outputs/scDblFinder_result/scPred_pbmc_1"
+df_cluster <- readRDS(paste(df_path, "cluster.rds", sep = "/"))
+df_cluster_name <- as.vector(df_cluster@meta.data$seurat_clusters)
+df_cluster_name <- sapply(
+  df_cluster_name,
+  function(x) paste("cluster", x, sep = "_"))
+names(df_cluster_name) <- df_cluster@assays$RNA@counts@Dimnames[[2]]
+df_empty_type <- empty_cell_type
+df_cell_name <- intersect(
+  df_cluster@assays$RNA@counts@Dimnames[[2]],
+  sim_cell_name)
+df_empty_type[df_cell_name] <- df_cluster_name[df_cell_name]
+cluster_clean@meta.data$cluster_df <- df_empty_type
+pdf(file = "materials/figures/Figure.7-A-scDblFinder.pdf",
+    width = 8,
+    height = 6,
+    title = "scDblFinder")
+Seurat::DimPlot(
+  cluster_clean,
+  group.by = "cluster_df",
+  repel = TRUE,
+  label = TRUE,
+  cols = c(
+    "cluster_0" = "#E68613",
+    "cluster_1" = "#7CAE00",
+    "cluster_2" = "#72464B",
+    "cluster_3" = "#DC143C",
+    "cluster_4" = "#00A9FF",
+    "cluster_5" = "#F8766D",
+    "cluster_6" = "#B2A7B8",
+    "cluster_7" = "#C77CFF",
+    "cluster_8" = "#72464B",
+    "missing cell" = "#E6E6FA"
+  ))
+dev.off()
+rm(list = ls()[sapply(ls(), function(x) str_starts(x, "df_"))])
+
+
+# dirty
+df_path <- "internal_outputs/scPred_pbmc_1"
+df_cluster <- readRDS(paste(df_path, "dir_cluster.rds", sep = "/"))
+df_cluster_name <- as.vector(df_cluster@meta.data$seurat_clusters)
+df_cluster_name <- sapply(
+  df_cluster_name,
+  function(x) paste("cluster", x, sep = "_"))
+names(df_cluster_name) <- df_cluster@assays$RNA@counts@Dimnames[[2]]
+df_empty_type <- empty_cell_type
+df_cell_name <- intersect(
+  df_cluster@assays$RNA@counts@Dimnames[[2]],
+  sim_cell_name)
+df_empty_type[df_cell_name] <- df_cluster_name[df_cell_name]
+cluster_clean@meta.data$cluster_df <- df_empty_type
+pdf(file = "materials/figures/Figure.7-A-Negative-Control.pdf",
+    width = 8,
+    height = 6,
+    title = "Negative")
+Seurat::DimPlot(
+  cluster_clean,
+  group.by = "cluster_df",
+  repel = TRUE,
+  label = TRUE,
+  # cols = c(
+  #   "cluster_0" = "#E68613",
+  #   "cluster_1" = "#7CAE00",
+  #   #"cluster_2" = "#7CAE00",
+  #   "cluster_3" = "#F8766D",
+  #   #"cluster_4" = "#4169E1",
+  #   #"cluster_5" = "#00A9FF",
+  #   "cluster_6" = "#00A9FF",
+  #   #"cluster_7" = "#B2A7B8",
+  #   "cluster_8" = "#B2A7B8",
+  #   #"cluster_9" = "#72464B",
+  #   "cluster_10" = "",
+  #   "cluster"
+  #   "missing cell" = "#E6E6FA"
+  # )
+  )
+dev.off()
+rm(list = ls()[sapply(ls(), function(x) str_starts(x, "df_"))])

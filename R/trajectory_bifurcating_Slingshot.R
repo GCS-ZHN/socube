@@ -1,8 +1,8 @@
 # This file was create to do bifurcating cell trajectory inference
-source("./R/Methods.R")
+source("public/R/Methods.R")
 # read simulation data with bifurcating trajectories
 sim.data <-
-    readRDS("compares/Doublet-Detection-Benchmark/paper_sim/sim_psudotime_bifurcating.rds")
+    readRDS("internal_compares/Doublet-Detection-Benchmark/paper_sim/sim_psudotime_bifurcating.rds")
 sim.doublet <- sim.data[[1]]
 dim(sim.doublet)
 sim.type <- sim.data[[2]]
@@ -161,6 +161,39 @@ f <- function() {
     )
     lines(SlingshotDataSet(sim), lwd = 2, col = "black")
     dev.off()
+}
+f()
+rm(f)
+
+################################################################################
+# scDblFinder
+################################################################################
+library(scDblFinder)
+f <- function() {
+  score <- scDblFinder(sim.doublet)$scDblFinder.score
+  length(score)
+  hist(score)
+  pred.index <- which(as.numeric(score > 0.5) == 1)
+  counts <- sim.doublet[, -pred.index]
+  dim(counts)
+  types <- sim.type[-pred.index]
+  table(types)
+  sim <- trajectoryBySlingshot(counts)
+  pca <- as.data.frame(reducedDims(sim)$PCA)
+  pca$type <- as.numeric(types)
+  pca$type <- ifelse(pca$type == 0, "singlet", "doublet")
+  pca$type <- as.factor(pca$type)
+  pdf("internal_plots/scDblFinder_result/trajectory_bifurcating_th_0.5.pdf")
+  palette(c("red", "grey"))
+  plot(
+    pca$PC1,
+    pca$PC2,
+    col = pca$type,
+    pch = 16,
+    asp = 0
+  )
+  lines(SlingshotDataSet(sim), lwd = 2, col = "black")
+  dev.off()
 }
 f()
 rm(f)

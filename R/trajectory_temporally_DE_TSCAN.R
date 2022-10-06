@@ -1,10 +1,10 @@
 # This file was create to do temporally DEG analysis by TSCAN
 library(TSCAN)
-source("./R/Methods.R")
+source("public/R/Methods.R")
 # read simulation data with single trajectory and temporally expressed genes
 data <-
     readRDS(
-        "compares/Doublet-Detection-Benchmark/synthetic_datasets/sim_temporally_DE.rds"
+        "internal_compares/Doublet-Detection-Benchmark/synthetic_datasets/sim_temporally_DE.rds"
     )
 sim.doublet <- data[[1]]
 dim(sim.doublet)
@@ -70,6 +70,18 @@ f <- function() {
     score <- preditctByDoubletFinder(sim.doublet)
     pred.index <- which(as.numeric(score > 0.5) == 1)
     temporalDEbyTSCAN(counts = sim.doublet[, -pred.index], DE)
+}
+f()
+rm(f)
+
+################################################################################
+#scDblFinder
+################################################################################
+library(scDblFinder)
+f <- function() {
+  score <- scDblFinder(sim.doublet)$scDblFinder.score
+  pred.index <- which(as.numeric(score > 0.5) == 1)
+  temporalDEbyTSCAN(counts = sim.doublet[, -pred.index], DE)
 }
 f()
 rm(f)
