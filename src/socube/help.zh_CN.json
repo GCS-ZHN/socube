@@ -12,6 +12,7 @@
         "adj_factor": "二聚体表达水平的调整系数。默认情况下，假定二聚体的表达水平是单体的两倍，但实际情况存在波动，可以通过调整这个系数改变表达水平。默认为1.0。",
         "dim": "基因特征降维的目标维度也是训练模型的通道数量。默认为10。",
         "cube_id": "如果你想重新使用先前获得的socube嵌入特征，只需指定embedding ID，这是一个类似于 \"yyymmdd-HHMMSS-xxx\"的字符串，位于embedding子目录下。",
+        "generate_mode": "生成模拟二聚体的模式，可选值为\"balance\"、\"heterotypic\"和\"homotypic\"。默认为\"balance\"。",
         "only_embedding": "这个选项提供给那些只想使用socube的特征嵌入功能的用户，使用后不会进行二聚体检测"
     },
     "model_args": {
@@ -21,7 +22,7 @@
         "train_batch_size": "模型训练的批量大小。默认为64。",
         "valid_batch_size": "模型验证的批量大小。默认为512。",
         "infer_batch_size": "模型推理的批量大小。默认为400。",
-        "threshold": "二聚体检测的分类阈值。该模型输出双子的概率分数，大于阈值的被认为是二聚体，反之为单体。用户可以自定义阈值。默认为0.5。",
+        "threshold": "二聚体检测的分类阈值。该模型输出二聚体的概率分数，大于阈值的被认为是二聚体，反之为单体。用户可以自定义阈值。默认为0.5。",
         "enable_validation": "这个选项是为性能评估提供的。你应该输入h5ad格式的数据，并在其`obs`属性中存储标签。`obs'属性是一个`DataFrame'对象，它的标签列名为 \"type\"，值为 \"doublet \"和 \"singlet\"。",
         "enable_multiprocess": "启用多进程以利用CPU的多个核心。"
     },

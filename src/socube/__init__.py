@@ -20,7 +20,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-__version__ = "1.1rc1"
+__version__ = "1.1rc2"
 __author__ = "Zhang.H.N"
 __email__ = "zhang.h.n@foxmail.com"
 __url__ = "https://github/GCS-ZHN/socube/"
@@ -80,6 +80,11 @@ def main(*args: str):
                             type=str,
                             default=None,
                             help=help["basic_args"]["cube_id"])
+    basic_args.add_argument("--generate-mode",
+                            "-gm",
+                            type=str,
+                            default="balance",
+                            help=help["basic_args"]["generate_mode"])
     basic_args.add_argument("--only-embedding",
                             action="store_true",
                             default=False,
@@ -267,7 +272,8 @@ def main(*args: str):
                     future: Future = createTrainData(samples,
                                                     output_path=embedding_path,
                                                     adj=args.adj_factor,
-                                                    seed=args.seed)
+                                                    seed=args.seed,
+                                                    mode=args.generate_mode)
 
                 samples = samples.T
                 writeHdf(

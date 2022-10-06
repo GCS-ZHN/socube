@@ -12,6 +12,7 @@
         "adj_factor": "The adjustment factor for the doublet expression level. By default it is assumed that the doublet expression level is twice the sinlget, but there are fluctuations in the real situation and the expression level can be changed by adjusting this factor. Default 1.0.",
         "dim": "The target dimension for gene degradation is also the number of channels to train the model. Default 10.",
         "cube_id": "If you want to reuse the socube embedding features obtained earlier,  just specify the embedding ID, which is a string like \"yyyymmdd-HHMMSS-xxx\", along with the original output path.",
+        "generate_mode": "The generate mode of in-silico doublets, \"balance\", \"heterotypic\" or \"homotypic\". Default \"balance\".",
         "only_embedding": "This option is provided for users who only want to use socube embedding but do not require doublet detection"
     },
     "model_args": {

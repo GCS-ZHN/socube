@@ -32,6 +32,7 @@ from socube.data.loading import ConvDatasetBase
 from socube.utils.concurrence import parallel
 from socube.utils.io import uniquePath, writeCsv, writeHdf
 from socube.utils.logging import log
+from scipy.spatial import distance
 
 __all__ = ["ConvClassifyDataset", "generateDoublet", "checkShape", "checkData", "createTrainData"]
 
@@ -114,7 +115,8 @@ def generateDoublet(samples: pd.DataFrame,
                      ratio: float = 1.0,
                      adj: float = 1.0,
                      seed: Optional[int] = None,
-                     size: Optional[int] = None) -> Tuple[pd.DataFrame]:
+                     size: Optional[int] = None,
+                     mode: Optional[str] = "balance") -> Tuple[pd.DataFrame]:
     """
     Generate training set from samples. in silico doublet
     will be simulated as positive samples.
@@ -137,19 +139,39 @@ def generateDoublet(samples: pd.DataFrame,
     size: int, default None
         The size of the generated training set. If `None`, the size of the
         training set will be the same as the size of the samples.
+    mode: str, default "balance"
+        The mode of the generated training set. If "heterotypic", heterotypic
+        doublet will be majority. If "homotypic", homotypic doublet will be
+        majority. If "balance", the number of heterotypic and homotypic
+        doublet will be balanced.
 
     Returns
     ------------
     a tuple of two pd.DataFrame, the first is the positive (doublet) samples,
     the second is the negative (singlet) samples.
     """
+    assert mode in ["heterotypic", "homotypic", "balance"], "mode must be one of 'balance', 'heterotypic', 'homotypic'"
+    log("Preprocess", "Generating doublet with mode: {}".format(mode))
     values = samples.values
     droplet_num = samples.shape[0]
     if size is None or size <= 0:
         size = droplet_num
     doublet_num = int(ratio * size / (ratio + 1))
-    random = np.random.RandomState(seed)
-    pair_index = random.choice(droplet_num, size=(doublet_num, 2))
+    random = np.random.default_rng(seed)
+    if mode == "balance":
+        pair_index = random.choice(droplet_num, size=(doublet_num , 2))
+    else:
+        pair_index = random.choice(droplet_num, size=(doublet_num * 5, 2))
+        part_1 = values[pair_index[:, 0]]
+        part_2 = values[pair_index[:, 1]]
+        dist = np.apply_along_axis(
+            lambda idx: distance.correlation(part_1[idx[0]], part_2[idx[0]]), 
+            1, 
+            np.arange(pair_index.shape[0]).reshape(-1, 1))
+        if mode == "heterotypic":
+            dist = -dist
+        pair_index = pair_index[np.argpartition(dist, doublet_num)[:doublet_num]]
+    
     doublets = pd.DataFrame(values[pair_index[:, 0]] +
                             values[pair_index[:, 1]] * adj,
                             columns=samples.columns,
@@ -226,7 +248,8 @@ def createTrainData(samples: pd.DataFrame,
                     output_path: str,
                     ratio: float = 1,
                     adj: float = 1,
-                    seed: Optional[int] = None) -> Tuple[NDFrame]:
+                    seed: Optional[int] = None,
+                    mode: Optional[int] = "balance") -> Tuple[NDFrame]:
     """
     Based on the original data, doublets are generated as
     the positive data and a subset of the original data is used
@@ -248,6 +271,11 @@ def createTrainData(samples: pd.DataFrame,
         adjustment factor.
     seed: int, default None
         The random seed for the generation of the doublet.
+    mode: str, default "balance"
+        The mode of the generated training set. If "heterotypic", heterotypic
+        doublet will be majority. If "homotypic", homotypic doublet will be
+        majority. If "balance", the number of heterotypic and homotypic doublet
+        will be balanced. see `generateDoublet` for more details.
 
     Returns
     -------
@@ -259,7 +287,8 @@ def createTrainData(samples: pd.DataFrame,
                                           seed=seed,
                                           ratio=ratio,
                                           adj=adj,
-                                          size=len(samples))
+                                          size=len(samples),
+                                          mode=mode)
     train_data = pd.concat([samples, doublets])
 
     log("Generate", "Writing dataset...")
