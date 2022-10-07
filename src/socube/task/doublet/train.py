@@ -66,7 +66,7 @@ def fit(home_dir: str,
         step: int = 5,
         model_id: str = None,
         pretrain_model_path: str = None,
-        max_acc_limit: float = 1,
+        max_acc_limit: float = 1.0,
         multi_process: bool = False,
         **kwargs) -> str:
     """

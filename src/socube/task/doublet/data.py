@@ -246,8 +246,8 @@ def checkData(data: pd.DataFrame):
 @parallel
 def createTrainData(samples: pd.DataFrame,
                     output_path: str,
-                    ratio: float = 1,
-                    adj: float = 1,
+                    ratio: float = 1.0,
+                    adj: float = 1.0,
                     seed: Optional[int] = None,
                     mode: Optional[int] = "balance") -> Tuple[NDFrame]:
     """
