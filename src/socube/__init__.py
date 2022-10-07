@@ -85,6 +85,10 @@ def main(*args: str):
                             type=str,
                             default="balance",
                             help=help["basic_args"]["generate_mode"])
+    basic_args.add_argument("--generate-ratio",
+                            type=float,
+                            default=1.0,
+                            help=help["basic_args"]["generate_ratio"])
     basic_args.add_argument("--only-embedding",
                             action="store_true",
                             default=False,
@@ -127,6 +131,10 @@ def main(*args: str):
                             "-mp",
                             action="store_true",
                             help=help["model_args"]["enable_multiprocess"])
+    model_args.add_argument("--enable-ensemble",
+                            "-ee",
+                            action="store_true",
+                            help=help["model_args"]["enable_ensemble"])
 
     notice_args = parser.add_argument_group(help["notice_args"]["title"])
     notice_args.add_argument("--mail",
@@ -273,7 +281,8 @@ def main(*args: str):
                                                     output_path=embedding_path,
                                                     adj=args.adj_factor,
                                                     seed=args.seed,
-                                                    mode=args.generate_mode)
+                                                    mode=args.generate_mode,
+                                                    ratio=args.generate_ratio)
 
                 samples = samples.T
                 writeHdf(
@@ -343,11 +352,11 @@ def main(*args: str):
                        label_file="TrainLabel.csv",
                        threshold=args.threshold,
                        k=args.k,
-                       once=False,
                        use_index=False,
                        step=5,
                        max_acc_limit=1,
-                       multi_process=args.enable_multiprocess)
+                       multi_process=args.enable_multiprocess,
+                       once=(not args.enable_ensemble))
 
         log("Inference", "Begin doublet detection output")
         infer(data_dir=train_path,
@@ -361,6 +370,7 @@ def main(*args: str):
               gpu_ids=gpu_ids,
               with_eval=args.enable_validation,
               seed=args.seed,
-              multi_process=args.enable_multiprocess)
+              multi_process=args.enable_multiprocess,
+              once=(not args.enable_ensemble))
 
         em.setNormalInfo("Doublet detection finished")

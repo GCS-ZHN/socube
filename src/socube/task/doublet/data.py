@@ -151,7 +151,7 @@ def generateDoublet(samples: pd.DataFrame,
     the second is the negative (singlet) samples.
     """
     assert mode in ["heterotypic", "homotypic", "balance"], "mode must be one of 'balance', 'heterotypic', 'homotypic'"
-    log("Preprocess", "Generating doublet with mode: {}".format(mode))
+    log("Generate", "Generating doublet with mode: {}".format(mode))
     values = samples.values
     droplet_num = samples.shape[0]
     if size is None or size <= 0:
