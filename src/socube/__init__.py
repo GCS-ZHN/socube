@@ -92,8 +92,7 @@ def main(*args: str):
     basic_args.add_argument("--only-embedding",
                             action="store_true",
                             default=False,
-                            help=help["basic_args"]["only_embedding"]
-    )
+                            help=help["basic_args"]["only_embedding"])
 
     model_args = parser.add_argument_group(help["model_args"]["title"])
     model_args.add_argument("--learning-rate",
@@ -277,12 +276,13 @@ def main(*args: str):
                 if args.only_embedding:
                     train_data = samples
                 else:
-                    future: Future = createTrainData(samples,
-                                                    output_path=embedding_path,
-                                                    adj=args.adj_factor,
-                                                    seed=args.seed,
-                                                    mode=args.generate_mode,
-                                                    ratio=args.generate_ratio)
+                    future: Future = createTrainData(
+                        samples,
+                        output_path=embedding_path,
+                        adj=args.adj_factor,
+                        seed=args.seed,
+                        mode=args.generate_mode,
+                        ratio=args.generate_ratio)
 
                 samples = samples.T
                 writeHdf(
@@ -307,7 +307,7 @@ def main(*args: str):
                             seed=args.seed,
                             latent_dim=args.dim,
                             job_id=cube_id)
-            
+
             if not args.only_embedding:
                 train_data, train_label = future.result()
 
@@ -319,12 +319,13 @@ def main(*args: str):
 
             if not args.only_embedding:
                 writeCsv(train_label,
-                        join(train_path, "TrainLabel.csv"),
-                        header=None)
+                         join(train_path, "TrainLabel.csv"),
+                         header=None)
                 if checkExist(join(embedding_path, "ExperimentLabel.csv"),
-                            raise_error=False):
-                    shutil.copyfile(join(embedding_path, "ExperimentLabel.csv"),
-                                    join(train_path, "ExperimentLabel.csv"))
+                              raise_error=False):
+                    shutil.copyfile(
+                        join(embedding_path, "ExperimentLabel.csv"),
+                        join(train_path, "ExperimentLabel.csv"))
 
         elif args.input is not None:
             log("Config", "input is ignored because cube id is specified")

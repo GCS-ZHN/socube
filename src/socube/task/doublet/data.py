@@ -34,7 +34,10 @@ from socube.utils.io import uniquePath, writeCsv, writeHdf
 from socube.utils.logging import log
 from scipy.spatial import distance
 
-__all__ = ["ConvClassifyDataset", "generateDoublet", "checkShape", "checkData", "createTrainData"]
+__all__ = [
+    "ConvClassifyDataset", "generateDoublet", "checkShape", "checkData",
+    "createTrainData"
+]
 
 
 class ConvClassifyDataset(ConvDatasetBase):
@@ -112,11 +115,11 @@ class ConvClassifyDataset(ConvDatasetBase):
 
 
 def generateDoublet(samples: pd.DataFrame,
-                     ratio: float = 1.0,
-                     adj: float = 1.0,
-                     seed: Optional[int] = None,
-                     size: Optional[int] = None,
-                     mode: Optional[str] = "balance") -> Tuple[pd.DataFrame]:
+                    ratio: float = 1.0,
+                    adj: float = 1.0,
+                    seed: Optional[int] = None,
+                    size: Optional[int] = None,
+                    mode: Optional[str] = "balance") -> Tuple[pd.DataFrame]:
     """
     Generate training set from samples. in silico doublet
     will be simulated as positive samples.
@@ -150,7 +153,9 @@ def generateDoublet(samples: pd.DataFrame,
     a tuple of two pd.DataFrame, the first is the positive (doublet) samples,
     the second is the negative (singlet) samples.
     """
-    assert mode in ["heterotypic", "homotypic", "balance"], "mode must be one of 'balance', 'heterotypic', 'homotypic'"
+    assert mode in [
+        "heterotypic", "homotypic", "balance"
+    ], "mode must be one of 'balance', 'heterotypic', 'homotypic'"
     log("Generate", "Generating doublet with mode: {}".format(mode))
     values = samples.values
     droplet_num = samples.shape[0]
@@ -159,19 +164,20 @@ def generateDoublet(samples: pd.DataFrame,
     doublet_num = int(ratio * size / (ratio + 1))
     random = np.random.default_rng(seed)
     if mode == "balance":
-        pair_index = random.choice(droplet_num, size=(doublet_num , 2))
+        pair_index = random.choice(droplet_num, size=(doublet_num, 2))
     else:
         pair_index = random.choice(droplet_num, size=(doublet_num * 5, 2))
         part_1 = values[pair_index[:, 0]]
         part_2 = values[pair_index[:, 1]]
         dist = np.apply_along_axis(
-            lambda idx: distance.correlation(part_1[idx[0]], part_2[idx[0]]), 
-            1, 
+            lambda idx: distance.correlation(part_1[idx[0]], part_2[idx[0]]),
+            1,
             np.arange(pair_index.shape[0]).reshape(-1, 1))
         if mode == "heterotypic":
             dist = -dist
-        pair_index = pair_index[np.argpartition(dist, doublet_num)[:doublet_num]]
-    
+        pair_index = pair_index[np.argpartition(dist,
+                                                doublet_num)[:doublet_num]]
+
     doublets = pd.DataFrame(values[pair_index[:, 0]] +
                             values[pair_index[:, 1]] * adj,
                             columns=samples.columns,
@@ -191,7 +197,7 @@ def checkShape(path: str, shape: tuple = (10, None, None)) -> None:
         the dataset's directory
     shape: tuple, default (10, None, None)
         the expected shape of the dataset, None means any shape
-    
+
     Raises
     ------------
     AssertionError: if the shape of the dataset is not the same as the expected
@@ -223,6 +229,7 @@ def checkData(data: pd.DataFrame):
         If data contains duplicate column or row names,
         or if droplet name begins with "doublet"
     """
+
     def _check(x: pd.Series):
         if x.name.startswith("doublet"):
             raise IndexError(
@@ -284,11 +291,11 @@ def createTrainData(samples: pd.DataFrame,
     """
     log("Generate", f"Generating doublet with ratio {ratio} and adj {adj}...")
     singlets, doublets = generateDoublet(samples,
-                                          seed=seed,
-                                          ratio=ratio,
-                                          adj=adj,
-                                          size=len(samples),
-                                          mode=mode)
+                                         seed=seed,
+                                         ratio=ratio,
+                                         adj=adj,
+                                         size=len(samples),
+                                         mode=mode)
     train_data = pd.concat([samples, doublets])
 
     log("Generate", "Writing dataset...")
@@ -307,8 +314,8 @@ def createTrainData(samples: pd.DataFrame,
     train_label = pd.concat([negative, positive])
     writeCsv(train_label,
              uniquePath(
-                 os.path.join(output_path, f"label[raw+samples({ratio},{adj})].csv"),
-                 True),
+                 os.path.join(output_path,
+                              f"label[raw+samples({ratio},{adj})].csv"), True),
              header=None)
     log("Generate", "Train data created")
     return train_data, train_label
