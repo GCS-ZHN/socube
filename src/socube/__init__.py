@@ -20,7 +20,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-__version__ = "1.1rc2"
+__version__ = "1.1"
 __author__ = "Zhang.H.N"
 __email__ = "zhang.h.n@foxmail.com"
 __url__ = "https://github/GCS-ZHN/socube/"
