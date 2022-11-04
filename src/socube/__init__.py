@@ -20,7 +20,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-__version__ = "1.1rc1"
+__version__ = "1.1"
 __author__ = "Zhang.H.N"
 __email__ = "zhang.h.n@foxmail.com"
 __url__ = "https://github/GCS-ZHN/socube/"
@@ -80,11 +80,19 @@ def main(*args: str):
                             type=str,
                             default=None,
                             help=help["basic_args"]["cube_id"])
+    basic_args.add_argument("--generate-mode",
+                            "-gm",
+                            type=str,
+                            default="balance",
+                            help=help["basic_args"]["generate_mode"])
+    basic_args.add_argument("--generate-ratio",
+                            type=float,
+                            default=1.0,
+                            help=help["basic_args"]["generate_ratio"])
     basic_args.add_argument("--only-embedding",
                             action="store_true",
                             default=False,
-                            help=help["basic_args"]["only_embedding"]
-    )
+                            help=help["basic_args"]["only_embedding"])
 
     model_args = parser.add_argument_group(help["model_args"]["title"])
     model_args.add_argument("--learning-rate",
@@ -122,6 +130,10 @@ def main(*args: str):
                             "-mp",
                             action="store_true",
                             help=help["model_args"]["enable_multiprocess"])
+    model_args.add_argument("--enable-ensemble",
+                            "-ee",
+                            action="store_true",
+                            help=help["model_args"]["enable_ensemble"])
 
     notice_args = parser.add_argument_group(help["notice_args"]["title"])
     notice_args.add_argument("--mail",
@@ -264,10 +276,13 @@ def main(*args: str):
                 if args.only_embedding:
                     train_data = samples
                 else:
-                    future: Future = createTrainData(samples,
-                                                    output_path=embedding_path,
-                                                    adj=args.adj_factor,
-                                                    seed=args.seed)
+                    future: Future = createTrainData(
+                        samples,
+                        output_path=embedding_path,
+                        adj=args.adj_factor,
+                        seed=args.seed,
+                        mode=args.generate_mode,
+                        ratio=args.generate_ratio)
 
                 samples = samples.T
                 writeHdf(
@@ -292,7 +307,7 @@ def main(*args: str):
                             seed=args.seed,
                             latent_dim=args.dim,
                             job_id=cube_id)
-            
+
             if not args.only_embedding:
                 train_data, train_label = future.result()
 
@@ -304,12 +319,13 @@ def main(*args: str):
 
             if not args.only_embedding:
                 writeCsv(train_label,
-                        join(train_path, "TrainLabel.csv"),
-                        header=None)
+                         join(train_path, "TrainLabel.csv"),
+                         header=None)
                 if checkExist(join(embedding_path, "ExperimentLabel.csv"),
-                            raise_error=False):
-                    shutil.copyfile(join(embedding_path, "ExperimentLabel.csv"),
-                                    join(train_path, "ExperimentLabel.csv"))
+                              raise_error=False):
+                    shutil.copyfile(
+                        join(embedding_path, "ExperimentLabel.csv"),
+                        join(train_path, "ExperimentLabel.csv"))
 
         elif args.input is not None:
             log("Config", "input is ignored because cube id is specified")
@@ -337,11 +353,11 @@ def main(*args: str):
                        label_file="TrainLabel.csv",
                        threshold=args.threshold,
                        k=args.k,
-                       once=False,
                        use_index=False,
                        step=5,
                        max_acc_limit=1,
-                       multi_process=args.enable_multiprocess)
+                       multi_process=args.enable_multiprocess,
+                       once=(not args.enable_ensemble))
 
         log("Inference", "Begin doublet detection output")
         infer(data_dir=train_path,
@@ -355,6 +371,7 @@ def main(*args: str):
               gpu_ids=gpu_ids,
               with_eval=args.enable_validation,
               seed=args.seed,
-              multi_process=args.enable_multiprocess)
+              multi_process=args.enable_multiprocess,
+              once=(not args.enable_ensemble))
 
         em.setNormalInfo("Doublet detection finished")

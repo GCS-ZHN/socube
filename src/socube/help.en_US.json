@@ -12,7 +12,9 @@
         "adj_factor": "The adjustment factor for the doublet expression level. By default it is assumed that the doublet expression level is twice the sinlget, but there are fluctuations in the real situation and the expression level can be changed by adjusting this factor. Default 1.0.",
         "dim": "The target dimension for gene degradation is also the number of channels to train the model. Default 10.",
         "cube_id": "If you want to reuse the socube embedding features obtained earlier,  just specify the embedding ID, which is a string like \"yyyymmdd-HHMMSS-xxx\", along with the original output path.",
-        "only_embedding": "This option is provided for users who only want to use socube embedding but do not require doublet detection"
+        "generate_ratio": "The ratio of the number of generated doublets to the number of singlets. Default 1.0.",
+        "generate_mode": "The generate mode of in-silico doublets, \"balance\", \"heterotypic\" or \"homotypic\". Default \"balance\".",
+        "only_embedding": "This option is provided for users who only want to use socube embedding but do not require doublet detection. If this option is specified, the model training and doublet detection will not be performed."
     },
     "model_args": {
         "title": "model training configuration",
@@ -23,7 +25,8 @@
         "infer_batch_size": "Batch size of model inferring. Default 400.",
         "threshold": "The classification threshold for doublet detection. The model outputs the probability score of doublet, which is greater than the threshold considered as doublet and vice versa for singlet. user can customize the threshold value. Default 0.5.",
         "enable_validation": "This optional is provided for performance evaluation. You should input h5ad format data, and store label in its `obs` property. `obs` property is a `DataFrame` object and its label column named \"type\" and value is \"doublet\" and \"singlet\".",
-        "enable_multiprocess": "Enable multi process to make use of CPU's multiple cores."
+        "enable_multiprocess": "Enable multi process to make use of CPU's multiple cores.",
+        "enable_ensemble": "Enable ensemble model, which is the average of k models trained by k-fold cross-validation. Default False."
     },
     "notice_args": {
         "title": "notice configuration",

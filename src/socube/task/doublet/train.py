@@ -66,7 +66,7 @@ def fit(home_dir: str,
         step: int = 5,
         model_id: str = None,
         pretrain_model_path: str = None,
-        max_acc_limit: float = 1,
+        max_acc_limit: float = 1.0,
         multi_process: bool = False,
         **kwargs) -> str:
     """
@@ -186,23 +186,38 @@ def fit(home_dir: str,
     # If free memory of cuda:0 is less than required, a Runtime Error will occurred
     # Otherwise, you will find TWO gpu device are used by your process in `nvidia-smi` report.
     
-    with ParallelManager(paral_type="process", max_workers=k if multi_process else 1, verbose=True) as pm:
-        results: List[Future] = []
+    if multi_process:
+        log("Train", "Use multi-process to train the model")
+        with ParallelManager(paral_type="process", max_workers=k, verbose=False) as pm:
+            results: List[Future] = []
+            for fold, (train_set, valid_set) in enumerate(dataset.kFold, 1):
+                device = torch.device("cpu")
+                if gpu_ids is not None and len(gpu_ids) > 0 and torch.cuda.is_available():
+                    device = torch.device(gpu_ids[(fold-1)%len(gpu_ids)])
+                results.append(pm.submit(_fit, fold = fold, device=device, train_set=train_set, valid_set = valid_set,  **train_kwargs))
+                # quit k-fold
+                if once:
+                    break
+
+            for result in results:
+                rep, train_rep = result.result()
+                for head in rep:
+                    report[head] = rep[head]
+                for head in train_rep:
+                    train_record[head] = train_rep[head]
+    else:
         for fold, (train_set, valid_set) in enumerate(dataset.kFold, 1):
             device = torch.device("cpu")
             if gpu_ids is not None and len(gpu_ids) > 0 and torch.cuda.is_available():
                 device = torch.device(gpu_ids[(fold-1)%len(gpu_ids)])
-            results.append(pm.submit(_fit, fold = fold, device=device, train_set=train_set, valid_set = valid_set,  **train_kwargs))
-            # quit k-fold
-            if once:
-                break
-
-        for result in results:
-            rep, train_rep = result.result()
+            rep, train_rep = _fit(fold=fold, device=device, train_set=train_set, valid_set=valid_set, **train_kwargs)
             for head in rep:
                 report[head] = rep[head]
             for head in train_rep:
                 train_record[head] = train_rep[head]
+            # quit k-fold
+            if once:
+                break
 
     report["average"] = report.mean(axis=1)
     report["sample_stdev"] = report.std(axis=1)
@@ -437,7 +452,8 @@ def infer(data_dir: str,
           gpu_ids: List[str] = None,
           with_eval: bool = False,
           seed: Optional[int] = None,
-          multi_process: bool = False):
+          multi_process: bool = False,
+          once: bool = False):
     """
     Model inference
 
@@ -467,6 +483,8 @@ def infer(data_dir: str,
         the seed for random
     multi_process: bool
         whether to use multi-process for inference
+    once: bool
+        whether use emsemble for inference
     """
     dataset = ConvClassifyDataset(data_dir=data_dir,
                                   labels=label_file,
@@ -485,13 +503,35 @@ def infer(data_dir: str,
         mkDirs(plot_dir)
     mkDirs(output_dir)
     ensemble_score_list = []
-    with ParallelManager(max_workers=k if multi_process else 1, paral_type="process", verbose=True) as pm:
-        results: List[Future] = []
+    if multi_process:
+        with ParallelManager(max_workers=k, paral_type="process", verbose=True) as pm:
+            results: List[Future] = []
+            for fold in range(1, k + 1):
+                device = torch.device("cpu")
+                if gpu_ids is not None and len(gpu_ids) > 0 and torch.cuda.is_available():
+                    device = torch.device(gpu_ids[(fold-1)%len(gpu_ids)])
+                results.append(pm.submit(_infer,
+                    in_channels,
+                    model_dir,
+                    dataset,
+                    batch_size,
+                    device,
+                    with_eval,
+                    plot_dir,
+                    threshold,
+                    fold,
+                    output_dir))
+                
+                if once:
+                    break
+            for result in results:
+                ensemble_score_list.append(result.result())
+    else:
         for fold in range(1, k + 1):
             device = torch.device("cpu")
             if gpu_ids is not None and len(gpu_ids) > 0 and torch.cuda.is_available():
                 device = torch.device(gpu_ids[(fold-1)%len(gpu_ids)])
-            results.append(pm.submit(_infer,
+            ensemble_score_list.append(_infer(
                 in_channels,
                 model_dir,
                 dataset,
@@ -502,18 +542,22 @@ def infer(data_dir: str,
                 threshold,
                 fold,
                 output_dir))
-        for result in results:
-            ensemble_score_list.append(result.result())
-    log("Inference", "Model ensembling")
-    ensemble_score = sum(ensemble_score_list) / k
+            if once:
+                break
+    
+    if once:
+        ensemble_score = ensemble_score_list[0]
+    else:
+        log("Inference", "Model ensembling")
+        ensemble_score = np.mean(ensemble_score_list, axis=0)
 
-    if with_eval:
+    if with_eval and not once:
         writeCsv(
             evaluateReport(
                 label=dataset._labels.iloc[:, 0].values,
                 score=ensemble_score,
-                roc_plot_file=os.path.join(plot_dir, f"inference_roc_{threshold}.png"),
-                prc_plot_file=os.path.join(plot_dir, f"inference_prc_{threshold}.png"),
+                roc_plot_file=os.path.join(plot_dir, f"inference_roc_{threshold}.pdf"),
+                prc_plot_file=os.path.join(plot_dir, f"inference_prc_{threshold}.pdf"),
                 threshold=threshold),
             os.path.join(output_dir, f"inference_report_{threshold}.csv"))
 
@@ -534,7 +578,7 @@ def _infer(
     plot_dir,
     threshold,
     fold,
-    output_dir):
+    output_dir) -> np.ndarray:
     """
     Internal function for inference
     """
@@ -551,9 +595,9 @@ def _infer(
                 label=label,
                 score=score,
                 roc_plot_file=os.path.join(plot_dir,
-                                    f"inference_roc_{fold}_{threshold}.png"),
+                                    f"inference_roc_{fold}_{threshold}.pdf"),
                 prc_plot_file=os.path.join(plot_dir,
-                                    f"inference_prc_{fold}_{threshold}.png"),
+                                    f"inference_prc_{fold}_{threshold}.pdf"),
                 threshold=threshold),
             os.path.join(output_dir, f"inference_report_{fold}_{threshold}.csv"))
 
