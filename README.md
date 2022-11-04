@@ -23,5 +23,8 @@ socube -i data/pbmc-1C-dm.h5ad --gpu-ids 0
 ```
 Please visit our [user manual](https://www.gcszhn.top/socube/) for usage detail.
 
+## Paper reproduce
+This repo is open source for socube software. If you want reprocduce result in original paper, Please visit repo [GCS-ZHN/socube-reproduce](https://github.com/GCS-ZHN/socube-reproduce/).
+
 ## Help
 Any problem, you could create an [issue](https://github.com/GCS-ZHN/socube/issues), we will receive an email sent by github and reply it as soon as possible.
