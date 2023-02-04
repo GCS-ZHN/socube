@@ -174,13 +174,6 @@ class NetBase(ModuleBase):
                  out_channels: int,
                  shape: Tuple[int] = None,
                  **kwargs) -> None:
-        r"""
-        Parameters:
-        ----------
-        - inChannels
-        - outChannels
-        - shape  the shape of a sample.
-        """
         super().__init__(in_channels, out_channels, **kwargs)
         self._binary = False
         self._shape = shape

@@ -27,6 +27,18 @@ __url__ = "https://github/GCS-ZHN/socube/"
 
 
 def main(*args: str):
+    """
+    Entrypoint function of socube commandline interface.
+    For parameter details, just run it without any args
+    to print help info. See also at 
+    https://docs.idrblab.cn/socube.
+
+    Examples
+    ---------------
+    >>> from socube import main
+    >>> main() # print hellp info
+    
+    """
     import locale
     import json
     from argparse import ArgumentParser
