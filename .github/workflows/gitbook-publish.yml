@@ -9,7 +9,7 @@ on:
 
 jobs:
   build:
-    if: (github.actor == github.repository_owner) || (github.event_name == 'push')
+    # if: (github.actor == github.repository_owner) || (github.event_name == 'push')
     runs-on: ubuntu-latest
     steps:
     - name: Checkout action
